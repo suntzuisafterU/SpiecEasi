@@ -22,10 +22,10 @@ getOptMerge <- function(est) {
 #' @return Weighted, non-symmetric matrix of model coefficients.
 #' @export
 getOptBeta <- function(est) {
-    if (class(est) == "select" && est$method == "mb") {
+    if (class(est) == "select" && est$method %in% c("mb", "ism")) {
         return(est$beta[[est$opt.index]])
     } else 
-        stop("Run spiec-easi with method=\"mb\"")
+        stop("Run spiec-easi with method=\"mb\" or \"ism\"")
 }
 
 #' sym beta
@@ -65,4 +65,37 @@ symBeta <- function(beta, mode='ave') {
     } else 
         stop ("mode not recognized")
     as(symbeta, 'symmetricMatrix')
+}
+
+
+#' @export
+triu <- function(x, k) x[upper.tri(x, !k)]
+#' @export
+tril <- function(x, k) x[lower.tri(x, !k)]
+
+#' @export
+triu2diag <- function(x, diagval=0) {
+    e <- length(x)
+    n <- .5 * (sqrt(8*e + 1)+1)
+    mat <- matrix(0, n, n)
+    mat[upper.tri(mat)] <- x
+    mat <- mat + t(mat)
+    diag(mat) <- diagval
+    mat
+}
+
+
+
+'[[.Matrix' <- function(x, i, exact=TRUE) {
+    if (exact) name <- attr(x, 'names')
+    else name <- substr(attr(x, 'names'), 1, nchar(i))
+    if (name == i)
+        return(x)
+    else return(NULL)
+}
+
+
+
+'$.Matrix' <- function(x, name) {
+    x[[ name, exact=FALSE]]
 }

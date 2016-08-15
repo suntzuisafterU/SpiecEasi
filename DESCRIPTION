@@ -10,6 +10,7 @@ Description: Estimate networks from the precision matrix of compositional
 Depends:
     R (>= 3.0.0),
 Imports:
+    pulsar,
     huge,
     MASS,
     VGAM,

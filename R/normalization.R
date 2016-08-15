@@ -97,19 +97,3 @@ alr.matrix <- function(x.f, mar=2, divcomp=1, base=exp(1), removeDivComp=TRUE,
 alr.data.frame <- function(x.f, mar=2, ...) {
     alr(as.matrix(x.f), mar, ...)
 }
-
-#' @export
-triu <- function(x) x[upper.tri(x)]
-#' @export
-tril <- function(x) x[lower.tri(x)]
-
-#' @export
-triu2diag <- function(x, diagval=0) {
-    e <- length(x)
-    n <- .5 * (sqrt(8*e + 1)+1)
-    mat <- matrix(0, n, n)
-    mat[upper.tri(mat)] <- x
-    mat <- mat + t(mat)
-    diag(mat) <- diagval
-    mat
-}
