@@ -105,7 +105,6 @@ glm.neighborhood <- function(X, Y, lambda, link='binomial') {
 ##    lapply(1:ncol(Bmat), function(i) Bmat[,i,drop=FALSE])
 }
 
-#' @useDynLib SpiecEasi LPGM_neighborhood
 llgm.neighborhood <- function(X, Y, lambda, startb=0, th=1e-6, intercept=FALSE) {
   n = nrow(X); p = ncol(X);
   p_new = p

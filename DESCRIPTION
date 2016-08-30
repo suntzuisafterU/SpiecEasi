@@ -14,12 +14,14 @@ Imports:
     huge,
     MASS,
     VGAM,
-    Matrix
+    Matrix,
+    Rcpp
 Suggests:
     parallel,
     boot,
     phyloseq,
     testthat
+LinkingTo: Rcpp, RcppArmadillo
 License: getOptions('devtools.desc.license')
 LazyData: true
 RoxygenNote: 5.0.1
