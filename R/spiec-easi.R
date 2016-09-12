@@ -41,6 +41,9 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', ver
         mb     = { estFun <- "sparseiCov" ;  args$method <- method
                    X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(cor(X)) },
 
+        slr    = { estFun <- "sparseLowRankiCov" ;
+                   X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(cor(X)) },
+
         coat   = { estFun <- "coat" ; X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(X) },
 
         ising  = { estFun <- "neighborhood.net" ; args$method <- method ; 
