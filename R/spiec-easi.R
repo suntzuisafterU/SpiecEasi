@@ -36,30 +36,31 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', ver
 
   switch(method,
         glasso = { estFun <- "sparseiCov" ;  args$method <- method
-                   X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(cor(X)) },
+                   X <- t(clr(data+1, 1)) ; if (missing(lambda.max)) lambda.max <- getMaxCov(cor(X)) },
 
         mb     = { estFun <- "sparseiCov" ;  args$method <- method
-                   X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(cor(X)) },
+                   X <- t(clr(data+1, 1)) ; if (missing(lambda.max)) lambda.max <- getMaxCov(cor(X)) },
 
         slr    = { estFun <- "sparseLowRankiCov" ;
-                   X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(cor(X)) },
+                   X <- t(clr(data+1, 1)) ; if (missing(lambda.max)) lambda.max <- getMaxCov(cor(X)) },
 
-        coat   = { estFun <- "coat" ; X <- t(clr(data+1, 1)) ; maxlam <- getMaxCov(X) },
+        coat   = { estFun <- "coat" ; X <- t(clr(data+1, 1)) ; 
+                   if (missing(lambda.max)) lambda.max <- getMaxCov(X) },
 
-        ising  = { estFun <- "neighborhood.net" ; args$method <- method ; 
-                   X <- sign(data) ; maxlam <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
+        ising  = { estFun <- "neighborhood.net" ; args$method <- method ; X <- sign(data) ; 
+                   if (missing(lambda.max)) lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
 
-        poisson= { estFun <- "neighborhood.net" ; args$method <- method
-                   X <- data ; maxlam <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
+        poisson= { estFun <- "neighborhood.net" ; args$method <- method ; X <- data ; 
+                   if (missing(lambda.max)) lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
 
-        loglin = { estFun <- "neighborhood.net" ; args$method <- method
-                   X <- data ; maxlam <- max(abs(t(scale(X)) %*% X)) / nrow(X) }
+        loglin = { estFun <- "neighborhood.net" ; args$method <- method ; X <- data ; 
+                   if (missing(lambda.max)) lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) }
     )
 
   if (is.null(args[[ "lambda" ]])) {
     if (is.null(args[[ "lambda.min.ratio" ]])) args$lambda.min.ratio <- 1e-3
     if (is.null(args[[ "nlambda" ]])) args$nlambda <- 20
-    args$lambda <- getLamPath(maxlam, maxlam*args$lambda.min.ratio, args$nlambda, log=TRUE)
+    args$lambda <- getLamPath(lambda.max, lambda.max*args$lambda.min.ratio, args$nlambda, log=TRUE)
     args$lambda.min.ratio <- NULL ; args$nlambda <- NULL
   }
 

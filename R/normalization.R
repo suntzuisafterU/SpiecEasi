@@ -97,3 +97,10 @@ alr.matrix <- function(x.f, mar=2, divcomp=1, base=exp(1), removeDivComp=TRUE,
 alr.data.frame <- function(x.f, mar=2, ...) {
     alr(as.matrix(x.f), mar, ...)
 }
+
+#' wrapper for log-ratio transformations with desired pseudo-count
+#' Added for compatability with future SpiecEasi options
+#' @export
+xlr <- function(x, fun=clr, pseudofun=function(x) x+1, ...) {
+  fun(pseudofun(x), ...)
+}
