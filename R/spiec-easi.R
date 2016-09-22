@@ -105,13 +105,14 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', ver
   fit <- refit(est)
   )
   if (pulsar.select) {
-    fit$select <- list(
-     merge     = est$stars$merge,
-     summary   = est$stars$summary,
-     opt.index = opt.index,
-     lb.index  = est$stars$lb.index,
-     ub.index  = est$stars$ub.index
-    )
+    fit$select <- est
+#    list(
+#     merge     = est$stars$merge,
+#     summary   = est$stars$summary,
+#     opt.index = opt.index,
+#     lb.index  = est$stars$lb.index,
+#     ub.index  = est$stars$ub.index
+#    )
     fit$refit <- if (sel.criterion=="gstars") fit$refit$gcd else fit$refit$stars
     attr(fit$refit, 'names') <- method
   }
