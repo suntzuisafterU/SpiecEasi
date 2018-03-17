@@ -75,7 +75,7 @@ neighborhood.net <- function(Z, lambda, method="ising", ncores=1, sym='or', ...)
     p <- ncol(Z)
     l <- length(lambda)
     args <- list(...)
-      match.fun(switch(method, 
+      match.fun(switch(method,
         ising   ={ nbFun <- glm.neighborhood ; args$link <- 'binomial' },
         poisson ={ nbFun <- glm.neighborhood ; args$link <- 'poisson' },
         loglin  ={ nbFun <- llgm.neighborhood}
@@ -100,9 +100,8 @@ neighborhood.net <- function(Z, lambda, method="ising", ncores=1, sym='or', ...)
 
 
 #' @importFrom glmnet glmnet
-glm.neighborhood <- function(X, Y, lambda, link='binomial') {
-    return(as.matrix(Bmat <- glmnet::glmnet(X, Y, family=link, lambda=lambda)$beta))
-##    lapply(1:ncol(Bmat), function(i) Bmat[,i,drop=FALSE])
+glm.neighborhood <- function(X, Y, lambda, link='binomial', ...) {
+    return(as.matrix(Bmat <- glmnet::glmnet(X, Y, family=link, lambda=lambda, ...)$beta))
 }
 
 llgm.neighborhood <- function(X, Y, lambda, startb=0, th=1e-6, intercept=FALSE) {
@@ -110,7 +109,7 @@ llgm.neighborhood <- function(X, Y, lambda, startb=0, th=1e-6, intercept=FALSE) 
   p_new = p
   nlams <- length(lambda)
   X <- scale(X)
-  # NOTE: here check if intercept, change X and 
+  # NOTE: here check if intercept, change X and
   if(intercept){
     Xorig = X;
     X = cbind(t(t(rep(1,n))),Xorig);
@@ -123,7 +122,7 @@ llgm.neighborhood <- function(X, Y, lambda, startb=0, th=1e-6, intercept=FALSE) 
   Bmatin = matrix(0,p,nlams);
 
   out <- .C("LPGM_neighborhood",
-            X=as.double(t(X)), Y=as.double(Y), startb=as.double(startb), 
+            X=as.double(t(X)), Y=as.double(Y), startb=as.double(startb),
             lambda=as.double(lambda), n=as.integer(n), p=as.integer(p_new), nlams=as.integer(length(lambda)),
             alphas=as.double(alphasin), Bmat=as.double(Bmatin), PACKAGE="SpiecEasi")
 

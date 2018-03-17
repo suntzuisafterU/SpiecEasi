@@ -27,43 +27,96 @@ spiec.easi.phyloseq <- function(data, ...) {
 #' @rdname spiec.easi
 #' @importFrom pulsar pulsar getLamPath getMaxCov refit get.opt.index opt.index
 #' @export
-spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', verbose=TRUE,
-                               pulsar.select=TRUE, pulsar.params=list(),
-                               icov.select=pulsar.select, icov.select.params=pulsar.params, ...) {
+spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
+                        verbose=TRUE, pulsar.select=TRUE, pulsar.params=list(),
+                        icov.select=pulsar.select,
+                        icov.select.params=pulsar.params, ...) {
 
   args <- list(...)
-  if (verbose) message("Applying data transformations...")
+  if (verbose) msg <- .makeMessage("Applying data transformations...")
+  else msg <- .makeMessage('')
 
   switch(method,
-        glasso = { estFun <- "sparseiCov" ;  args$method <- method ; X <- t(clr(data+1, 1))
-                   if (is.null(args[['lambda.max']])) args$lambda.max <- getMaxCov(cor(X)) },
+        glasso = {
+                    message(msg, appendLF=verbose)
+                    estFun <- "sparseiCov"
+                    args$method <- method
+                    X <- t(clr(data+1, 1))
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- getMaxCov(cor(X))
+                 },
 
-        mb     = { estFun <- "sparseiCov" ;  args$method <- method ; X <- t(clr(data+1, 1))
-                   if (is.null(args[['lambda.max']])) args$lambda.max <- getMaxCov(cor(X)) },
+        mb     = {
+                    message(msg, appendLF=verbose)
+                    estFun <- "sparseiCov"
+                    args$method <- method
+                    X <- t(clr(data+1, 1))
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- getMaxCov(cor(X))
+                  },
 
-        slr    = { estFun <- "sparseLowRankiCov" ; X <- t(clr(data+1, 1)) 
-                   if (is.null(args[['lambda.max']])) args$lambda.max <- getMaxCov(cor(X)) },
+        slr    = {
+                    if (length(args$r) > 1) { #TODO: add beta vector option
+                      tmp <- lapply(args$r, function(r) {
+                        if (verbose)
+                          message(sprintf("SPIEC-EASI SLR, with rank r=%s", r))
+                        args$r <- r
+                        args2 <- c(list(data=data, method='slr',
+                            sel.criterion=sel.criterion, verbose=verbose,
+                            pulsar.params=pulsar.params,
+                            pulsar.select=pulsar.select), args)
+                        do.call(spiec.easi, args2)
+                      })
+                      names(tmp) <- paste0("rank", args$r)
+                      return(tmp)
+                    }
+                    message(msg, appendLF=verbose)
+                    estFun <- "sparseLowRankiCov"
+                    X <- t(clr(data+1, 1))
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- getMaxCov(cov(X))
+                  },
 
-        coat   = { estFun <- "coat" ; X <- t(clr(data+1, 1)) ; 
-                   if (is.null(args[['lambda.max']])) args$lambda.max <- getMaxCov(X) },
+        coat   = {
+                    message(msg, appendLF=verbose)
+                    estFun <- "coat"
+                    X <- t(clr(data+1, 1))
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- getMaxCov(X)
+                  },
 
-        ising  = { estFun <- "neighborhood.net" ; args$method <- method ; X <- sign(data) ; 
-                   if (is.null(args[['lambda.max']]))
-                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
+        ising  = {
+                    message(msg, appendLF=verbose)
+                    estFun <- "neighborhood.net"
+                    args$method <- method
+                    X <- sign(data) ;
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X)
+                  },
 
-        poisson= { estFun <- "neighborhood.net" ; args$method <- method ; X <- data ; 
-                   if (is.null(args[['lambda.max']]))
-                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) },
+        poisson= {
+                    message(msg, appendLF=verbose)
+                    estFun <- "neighborhood.net"
+                    args$method <- method
+                    X <- data ;
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X)
+                  },
 
-        loglin = { estFun <- "neighborhood.net" ; args$method <- method ; X <- data ; 
-                   if (is.null(args[['lambda.max']]))
-                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X) }
+        loglin = {
+                    message(msg, appendLF=verbose)
+                    estFun <- "neighborhood.net"
+                    args$method <- method
+                    X <- data
+                    if (is.null(args[['lambda.max']]))
+                      args$lambda.max <- max(abs(t(scale(X)) %*% X)) / nrow(X)
+                }
     )
 
   if (is.null(args[[ "lambda" ]])) {
     if (is.null(args[[ "lambda.min.ratio" ]])) args$lambda.min.ratio <- 1e-3
     if (is.null(args[[ "nlambda" ]])) args$nlambda <- 20
-    args$lambda <- getLamPath(args$lambda.max, args$lambda.max*args$lambda.min.ratio, 
+    args$lambda <- getLamPath(args$lambda.max, args$lambda.max*args$lambda.min.ratio,
                               args$nlambda, log=TRUE)
     args$lambda.min.ratio <- args$nlambda <- args$lambda.max <- NULL
   }
@@ -75,7 +128,7 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', ver
       pulsar.params <- icov.select.params
   }
 
-  pulsar.params$criterion <- 
+  pulsar.params$criterion <-
     switch(sel.criterion,
            stars = "stars",
           bstars = "stars",
@@ -85,15 +138,15 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars', ver
   ## process pulsar.params defaults
   if (sel.criterion %in% c("bstars", "gstars"))
     pulsar.params$lb.stars <- pulsar.params$ub.stars <- TRUE
-  if (is.null(pulsar.params[[ "thresh" ]])) pulsar.params$thresh <- 0.05
 
+  if (is.null(pulsar.params[[ "thresh" ]])) pulsar.params$thresh <- 0.05
   call <- quote(pulsar(data=X, fun=match.fun(estFun), fargs=args))
   call <- do.call('update', c(pulsar.params, list(object=list(call=call), evaluate=FALSE)))
 
   if (pulsar.select) {
     if (verbose) message("Selecting model with pulsar using ", sel.criterion, "...")
     est <- eval(call, environment())
-    if (sel.criterion == "gstars") 
+    if (sel.criterion == "gstars")
         opt.index <- pulsar::opt.index(est) <- get.opt.index(est, 'gcd')
     else
         opt.index <- opt.index(est, 'stars')
