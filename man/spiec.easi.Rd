@@ -2,8 +2,8 @@
 % Please edit documentation in R/spiec-easi.R
 \name{spiec.easi}
 \alias{spiec.easi}
-\alias{spiec.easi.default}
 \alias{spiec.easi.phyloseq}
+\alias{spiec.easi.default}
 \title{SPIEC-EASI}
 \usage{
 spiec.easi(data, ...)
@@ -13,7 +13,7 @@ spiec.easi(data, ...)
 \method{spiec.easi}{default}(data, method = "glasso",
   sel.criterion = "stars", verbose = TRUE, pulsar.select = TRUE,
   pulsar.params = list(), icov.select = pulsar.select,
-  icov.select.params = pulsar.params, ...)
+  icov.select.params = pulsar.params, lambda.log = TRUE, ...)
 }
 \arguments{
 \item{data}{OTU count matrix with samples on rows and features/OTUs in columns or a phyloseq object with an OTU count table}
@@ -31,8 +31,9 @@ spiec.easi(data, ...)
 \item{icov.select}{defunct. can be set for backwards compatability, but ignored if pulsar.select and/or pulsar.params are given}
 
 \item{icov.select.params}{defunct. can be set for backwards compatability, but ignored if pulsar.select and/or pulsar.params are given}
+
+\item{dist.lambda}{how should lambdas be distributed between lambda.max and lmax*lambda.min.ratio, 'log' or 'linear'.}
 }
 \description{
 Run the whole pipeline
 }
-

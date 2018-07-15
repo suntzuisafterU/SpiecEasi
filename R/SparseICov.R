@@ -54,9 +54,11 @@ sparseiCov <- function(data, method, npn=FALSE, verbose=FALSE, cov.output = TRUE
   if (is.null(args$lambda.min.ratio)) args$lambda.min.ratio <- 1e-3
   p <- ncol(data) ; n <- nrow(data)
   if (method %in% c("glasso")) {
-    est <- do.call(huge::huge, c(args, list(x=data, method=method, verbose=verbose,
-                                            cov.output = cov.output)))
-    delDiag <- function(Mat) Matrix::triu(Mat,k=1) + t(Matrix::triu(Mat,k=1))
+    est <- do.call(huge::huge, c(args,
+      list(x=data, method=method, verbose=verbose,
+           cov.output = cov.output)))
+    delDiag <- function(Mat)
+    Matrix::triu(Mat,k=1) + t(Matrix::triu(Mat,k=1))
     est$path <- lapply(est$path, delDiag)
 
   } else if (method %in% c('mb')) {
@@ -80,13 +82,37 @@ neighborhood.net <- function(Z, lambda, method="ising", ncores=1, sym='or', ...)
         poisson ={ nbFun <- glm.neighborhood ; args$link <- 'poisson' },
         loglin  ={ nbFun <- llgm.neighborhood}
       ))
+
+    ### Remove 0/1 binomials/ zero variance features
+    if (method=='ising') {
+      mintab <- function(x) {
+          xtab <- table(x)
+          length(xtab) == 1 || min(xtab) == 1
+      }
+      zvind  <- which(apply(Z, 2, mintab))
+    } else {
+      zvind <- which(apply(Z, 2, var)==0)
+    }
+
     estFun <- function(i) {
       betamat      <- matrix(0, p, l)
-      betamat[-i,] <- do.call(nbFun, c(list(Z[,-i], Z[,i,drop=FALSE], lambda), args))
+      if (!(i %in% zvind)) {
+        suppressWarnings(
+          out <- do.call(nbFun,
+              c(list(Z[,-c(i, zvind)], Z[,i,drop=FALSE], lambda), args)))
+        lsub <- ncol(out)
+        if (lsub<l) {
+          ## extend missing lambdas value if glmnet
+          ## returns only larger solution ##
+          out <- cbind(out, out[,rep(lsub, l-lsub)])
+        }
+        betamat[-c(i, zvind),] <- out
+      }
       betamat
     }
 
-    est <- parallel::mcmapply(estFun, 1:p, mc.cores=ncores, SIMPLIFY='array')
+    est <- parallel::mcmapply(estFun, 1:p,
+                mc.cores=ncores, SIMPLIFY='array')
     beta <- vector('list', length(lambda))
     path <- vector('list', length(lambda))
     for (i in 1:dim(est)[2]) {

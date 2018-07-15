@@ -59,4 +59,3 @@ huge::huge.roc(est.log$path, Theta)
 huge::huge.roc(est.f$path,   Theta)
 
 }
-

@@ -9,6 +9,7 @@
 #' @param pulsar.params named list of arguments to pass to pulsar. See details.
 #' @param icov.select defunct. can be set for backwards compatability, but ignored if pulsar.select and/or pulsar.params are given
 #' @param icov.select.params defunct. can be set for backwards compatability, but ignored if pulsar.select and/or pulsar.params are given
+#' @param dist.lambda how should lambdas be distributed between lambda.max and lmax*lambda.min.ratio, 'log' or 'linear'.
 #' @param ... further arguments
 #' @export
 spiec.easi <- function(data, ...) {
@@ -30,7 +31,8 @@ spiec.easi.phyloseq <- function(data, ...) {
 spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
                         verbose=TRUE, pulsar.select=TRUE, pulsar.params=list(),
                         icov.select=pulsar.select,
-                        icov.select.params=pulsar.params, ...) {
+                        icov.select.params=pulsar.params,
+                        lambda.log=TRUE, ...) {
 
   args <- list(...)
   if (verbose) msg <- .makeMessage("Applying data transformations...")
@@ -56,6 +58,8 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
                   },
 
         slr    = {
+                    # if (!require('irlba'))
+                      # stop('irlba package required')
                     if (length(args$r) > 1) { #TODO: add beta vector option
                       tmp <- lapply(args$r, function(r) {
                         if (verbose)
@@ -117,7 +121,7 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
     if (is.null(args[[ "lambda.min.ratio" ]])) args$lambda.min.ratio <- 1e-3
     if (is.null(args[[ "nlambda" ]])) args$nlambda <- 20
     args$lambda <- getLamPath(args$lambda.max, args$lambda.max*args$lambda.min.ratio,
-                              args$nlambda, log=TRUE)
+                              args$nlambda, log=lambda.log)
     args$lambda.min.ratio <- args$nlambda <- args$lambda.max <- NULL
   }
 

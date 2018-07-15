@@ -13,7 +13,6 @@ Imports:
     pulsar,
     huge,
     MASS,
-    VGAM,
     Matrix,
     Rcpp
 Suggests:
@@ -24,4 +23,4 @@ Suggests:
 LinkingTo: Rcpp, RcppArmadillo
 License: getOptions('devtools.desc.license')
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
