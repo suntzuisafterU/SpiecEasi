@@ -9,6 +9,7 @@
 #' @param method estimation method to use as a character string. Currently either 'glasso' or 'mb' (meinshausen-buhlmann)
 #' @param npn perform Nonparanormal (npn) transformation before estimation?
 #' @param verbose print progress to standard out
+#' @param cov.output return the covariance matrix as well.
 #' @param ... further arguments to huge/estimation functions. See details.
 #' @details
 #' This is a wrapper function for sparse iCov estimations performed by glasso in the huge package.
@@ -24,10 +25,8 @@
 #' @examples
 #' # simulate data with 1 negative correlation
 #'  set.seed(10010)
-#'  Theta <- matrix(0, 50, 50)
-#'  Theta[1,2] <- Theta[2,1] <- 1
-#'  Sigma <- -.45*Theta
-#'  diag(Sigma) <- 1
+#'  Sigma <- diag(50)*2
+#'  Sigma[1,2] <- Sigma[2,1] <- -.9
 #'  data  <- exp(rmvnorm(50, runif(50, 0, 2), Sigma))
 #'
 #' # normalize
@@ -39,27 +38,25 @@
 #'  est.f    <- sparseiCov(data.f, method='glasso')
 #'  est.log  <- sparseiCov(log(data), method='glasso')
 #'
-#' # evaluate results
-#' huge::huge.roc(est.clr$path, Theta)
-#' huge::huge.roc(est.log$path, Theta)
-#' huge::huge.roc(est.f$path,   Theta)
-#'
+#' # visualize results
+#'  par(mfrow=c(1,3))
+#'  image(as.matrix(est.log$path[[3]][1:5,1:5]))
+#'  image(as.matrix(est.clr$path[[3]][1:5,1:5]))
+#'  image(as.matrix(est.f$path[[3]][1:5,1:5]))
 sparseiCov <- function(data, method, npn=FALSE, verbose=FALSE, cov.output = TRUE, ...) {
 
   if (npn) data <- huge::huge.npn(data, verbose=verbose)
 
   args <- list(...)
-  method <- switch(method, glasso = "glasso", mb = "mb", stop("Method not supported"))
+
+  method <- switch(method, glasso = "glasso", mb = "mb",
+                   stop("Method not supported"))
 
   if (is.null(args$lambda.min.ratio)) args$lambda.min.ratio <- 1e-3
   p <- ncol(data) ; n <- nrow(data)
   if (method %in% c("glasso")) {
-    est <- do.call(huge::huge, c(args,
-      list(x=data, method=method, verbose=verbose,
-           cov.output = cov.output)))
-    delDiag <- function(Mat)
-    Matrix::triu(Mat,k=1) + t(Matrix::triu(Mat,k=1))
-    est$path <- lapply(est$path, delDiag)
+    est <- do.call(huge::huge, c(args, list(x=data, method=method, verbose=verbose,
+                                     cov.output = cov.output)))
 
   } else if (method %in% c('mb')) {
     est <- do.call(huge::huge.mb, c(args, list(x=data, verbose=verbose)))
@@ -130,37 +127,6 @@ glm.neighborhood <- function(X, Y, lambda, link='binomial', ...) {
     return(as.matrix(Bmat <- glmnet::glmnet(X, Y, family=link, lambda=lambda, ...)$beta))
 }
 
-llgm.neighborhood <- function(X, Y, lambda, startb=0, th=1e-6, intercept=FALSE) {
-  n = nrow(X); p = ncol(X);
-  p_new = p
-  nlams <- length(lambda)
-  X <- scale(X)
-  # NOTE: here check if intercept, change X and
-  if(intercept){
-    Xorig = X;
-    X = cbind(t(t(rep(1,n))),Xorig);
-    p_new = ncol(X);
-  }
-
-  if(length(startb) == 1 & startb == 0){startb = rep(0, p_new)}
-
-  alphasin = rep(0, nlams)
-  Bmatin = matrix(0,p,nlams);
-
-  out <- .C("LPGM_neighborhood",
-            X=as.double(t(X)), Y=as.double(Y), startb=as.double(startb),
-            lambda=as.double(lambda), n=as.integer(n), p=as.integer(p_new), nlams=as.integer(length(lambda)),
-            alphas=as.double(alphasin), Bmat=as.double(Bmatin), PACKAGE="SpiecEasi")
-
-  alphas = out$alphas
-  if(is.null(out$Bmat)) {
-    Bmat = NULL
-  } else {
-    Bmat = matrix(out$Bmat, nrow=nrow(Bmatin), byrow=TRUE)
-    Bmat <- Bmat*(abs(Bmat)>th)
-  }
-  return(Bmat)
-}
 
 #' @keywords internal
 dclr <- function(x) t(clr(apply(x, 1, norm_diric),2))

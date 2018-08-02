@@ -1,16 +1,15 @@
-#' SparCC
+#' sparcc wrapper
 #'
-#' reimplementation of SparCC in R
-#'
-#' @param data count data
-#' @param iter number of iterations to compute median correlation
-#' @param inner_iter number of iterations for the inner loop
+#' @param data Community count data matrix
+#' @param iter Number of iterations in the outer loop
+#' @param inner_iter Number of iterations in the inner loop
+#' @param th absolute value of correlations below this threshold are considered zero by the inner SparCC loop.
 #' @export
 sparcc <- function(data, iter=20, inner_iter=10, th=.1) {
-## 
+##
 #  without all the 'frills'
-    sparccs <- 
-     lapply(1:iter, function(i) 
+    sparccs <-
+     lapply(1:iter, function(i)
          sparccinner(t(apply(data, 1, norm_diric)), iter=inner_iter, th=th))
     # collect
     cors <- array(unlist(lapply(sparccs, function(x) x$Cor)),
@@ -24,26 +23,26 @@ sparcc <- function(data, iter=20, inner_iter=10, th=.1) {
     list(Cov=covMed, Cor=corMed)
 }
 
-#' SparCC bootstraps
-#' 
-#' Bootstrapped Sparcc to get empirical and null distributions for correlations
+#' Bootstrap SparCC
 #'
-#' @param data count data matrix
-#' @param sparcc.params named list of parameters passed to sparcc
-#' @param statisticboot optional argument to override default bootstrap function
-#' @param statisticperm optional argument to override default permute function
-#' @return sparccboot object. Pass to \code{pval.sparccboot} to get empirical p-values
+#' Get bootstrapped estimates of SparCC correlation coefficients. Pass results to \code{pval.sparccboot}.
+#'
+#' @param data Community count data
+#' @param sparcc.params named list of parameters to pass to \code{sparcc}
+#' @param statisticboot function which takes data and bootstrap sample indices and results the upper triangle of the bootstapped correlation matrix
+#' @param statisticperm function which takes data and permutated sample indices and results the upper triangle of the null correlation matrix
+#' @param R number of bootstraps
+#' @param ncpus number of cores to use for parallelization
+#' @param ... more arguments to pass to \code{boot::boot}
 #' @export
-#' @importFrom boot boot
-sparccboot <- function(data, sparcc.params=list(), statisticboot, statisticperm, R, ncpus=1, ...) {
-    if (missing(statisticboot)) {
-        statisticboot <- function(data, indices)
-            triu(do.call("sparcc", c(list(data[indices,,drop=FALSE]), sparcc.params))$Cor)
-    }
-    if (missing(statisticperm)) {
-        statisticperm <- function(data, indices)
-            triu(do.call("sparcc", c(list(apply(data[indices,], 2, sample)), sparcc.params))$Cor)
-    }
+sparccboot <- function(data, sparcc.params=list(),
+                        statisticboot=function(data, indices) triu(do.call("sparcc",
+                      c(list(data[indices,,drop=FALSE]), sparcc.params))$Cor),
+                statisticperm=function(data, indices) triu(do.call("sparcc",  c(list(apply(data[indices,], 2, sample)), sparcc.params))$Cor),
+                      R, ncpus=1, ...) {
+
+    if (!requireNamespace('boot', quietly=TRUE))
+      stop('\'boot\' package is not installed')
 
     res     <- boot::boot(data, statisticboot, R=R, parallel="multicore", ncpus=ncpus, ...)
     null_av <- boot::boot(data, statisticperm, sim='permutation', R=R, parallel="multicore", ncpus=ncpus)
@@ -51,12 +50,12 @@ sparccboot <- function(data, sparcc.params=list(), statisticboot, statisticperm,
     structure(c(res, list(null_av=null_av)), class='sparccboot')
 }
 
-#' get pvals
+#' SparCC p-vals
 #'
-#' Compute empirical p-values from \code{sparccboot} output
+#' Get empirical p-values from bootstrap SparCC.
 #'
-#' @param x output from sparccboot
-#' @param sided compute two sided p-values (one-sided not currently supported)
+#' @param x output from \code{sparccboot}
+#' @param sided type of p-value to compute. Only two sided (sided="both") is implemented.
 #' @export
 pval.sparccboot <- function(x, sided='both') {
 # calculate 1 or 2 way pseudo p-val from boot object
@@ -64,8 +63,8 @@ pval.sparccboot <- function(x, sided='both') {
     if (sided != "both") stop("only two-sided currently supported")
     nparams  <- ncol(x$t)
     tmeans   <- colMeans(x$null_av$t)
-#    check to see whether Aitchison variance is unstable -- confirm 
-#    that sample Aitchison variance is in 95% confidence interval of 
+#    check to see whether Aitchison variance is unstable -- confirm
+#    that sample Aitchison variance is in 95% confidence interval of
 #    bootstrapped samples
     niters   <- nrow(x$t)
     ind95    <- max(1,round(.025*niters)):round(.975*niters)
@@ -77,7 +76,7 @@ pval.sparccboot <- function(x, sided='both') {
             range[1] > aitvar || range[2] < aitvar
         }))
     # calc whether center of mass is above or below the mean
-    bs_above <- unlist(lapply(1:nparams, function(i) 
+    bs_above <- unlist(lapply(1:nparams, function(i)
                     length(which(x$t[, i] > tmeans[i]))))
     is_above <- bs_above > x$R/2
     cors <- x$t0
@@ -153,8 +152,8 @@ basis_cov <- function(data.f) {
 }
 
 #' @keywords internal
-basis_var <- function(T, CovMat = matrix(0, nrow(T), ncol(T)), 
-                      M = matrix(1, nrow(T), ncol(T)) + (diag(ncol(T))*(ncol(T)-2)), 
+basis_var <- function(T, CovMat = matrix(0, nrow(T), ncol(T)),
+                      M = matrix(1, nrow(T), ncol(T)) + (diag(ncol(T))*(ncol(T)-2)),
                       excluded = NULL, Vmin=1e-4) {
 
     if (!is.null(excluded)) {
@@ -190,10 +189,9 @@ av <- function(data) {
 }
 
 
-#' importFrom VGAM rdiric
-#' @export
+#' @importFrom VGAM rdiric
+#' @keywords internal
 norm_diric   <- function(x, rep=1) {
     dmat <- VGAM::rdiric(rep, x+1)
     norm_to_total(colMeans(dmat))
 }
-

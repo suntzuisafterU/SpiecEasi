@@ -4,7 +4,7 @@
 \alias{sparseLowRankiCov}
 \title{sparse plus low rank inverse covariance}
 \usage{
-sparseLowRankiCov(data, npn = FALSE, verbose = FALSE, ...)
+sparseLowRankiCov(data, npn = FALSE, verbose = FALSE, cor = FALSE, ...)
 }
 \description{
 TODO: add description

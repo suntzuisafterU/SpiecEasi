@@ -46,7 +46,7 @@ sparseLowRankiCov <- function(data, npn=FALSE, verbose=FALSE, cor=FALSE, ...) {
     tmp <- est$S
     icov [[i]] <- tmp
     resid[[i]] <- est$L
-    tmp <- forceSymmetric(Matrix::triu(tmp,k=1))
+    tmp <- Matrix::forceSymmetric(Matrix::triu(tmp,k=1))
     path [[i]] <- as(tmp, 'lsCMatrix')
     args$opts$Lambda <- est$Lambda
     args$opts$Y      <- est$Y

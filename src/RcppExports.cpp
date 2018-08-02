@@ -47,6 +47,18 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// svdPowSym2
+List svdPowSym2(arma::mat& M, int k);
+RcppExport SEXP _SpiecEasi_svdPowSym2(SEXP MSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type M(MSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(svdPowSym2(M, k));
+    return rcpp_result_gen;
+END_RCPP
+}
 // softSVT3
 arma::mat softSVT3(arma::mat& M, int k, double beta);
 RcppExport SEXP _SpiecEasi_softSVT3(SEXP MSEXP, SEXP kSEXP, SEXP betaSEXP) {
@@ -73,6 +85,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// SVD2
+List SVD2(arma::mat& M);
+RcppExport SEXP _SpiecEasi_SVD2(SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(SVD2(M));
+    return rcpp_result_gen;
+END_RCPP
+}
 // ADMM
 List ADMM(const arma::mat& SigmaO, const double& lambda, arma::mat& I, arma::mat& Lambda, arma::mat& Y, double beta, int r, double mu, const double& eta, const double& muf, const int& maxiter, const double& newtol, const double& tol, const double& over_relax_par, bool shrinkDiag);
 RcppExport SEXP _SpiecEasi_ADMM(SEXP SigmaOSEXP, SEXP lambdaSEXP, SEXP ISEXP, SEXP LambdaSEXP, SEXP YSEXP, SEXP betaSEXP, SEXP rSEXP, SEXP muSEXP, SEXP etaSEXP, SEXP mufSEXP, SEXP maxiterSEXP, SEXP newtolSEXP, SEXP tolSEXP, SEXP over_relax_parSEXP, SEXP shrinkDiagSEXP) {
@@ -95,31 +118,6 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const double& >::type over_relax_par(over_relax_parSEXP);
     Rcpp::traits::input_parameter< bool >::type shrinkDiag(shrinkDiagSEXP);
     rcpp_result_gen = Rcpp::wrap(ADMM(SigmaO, lambda, I, Lambda, Y, beta, r, mu, eta, muf, maxiter, newtol, tol, over_relax_par, shrinkDiag));
-    return rcpp_result_gen;
-END_RCPP
-}
-// MATAVE2
-arma::mat MATAVE2(arma::mat A, arma::mat B);
-RcppExport SEXP _SpiecEasi_MATAVE2(SEXP ASEXP, SEXP BSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type A(ASEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type B(BSEXP);
-    rcpp_result_gen = Rcpp::wrap(MATAVE2(A, B));
-    return rcpp_result_gen;
-END_RCPP
-}
-// MATAVE3
-arma::mat MATAVE3(arma::mat A, arma::mat B, arma::mat C);
-RcppExport SEXP _SpiecEasi_MATAVE3(SEXP ASEXP, SEXP BSEXP, SEXP CSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::mat >::type A(ASEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type B(BSEXP);
-    Rcpp::traits::input_parameter< arma::mat >::type C(CSEXP);
-    rcpp_result_gen = Rcpp::wrap(MATAVE3(A, B, C));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -175,22 +173,19 @@ BEGIN_RCPP
 END_RCPP
 }
 
-RcppExport void LPGM_neighborhood(void *, void *, void *, void *, void *, void *, void *, void *, void *);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_SpiecEasi_sqrtmNewt2", (DL_FUNC) &_SpiecEasi_sqrtmNewt2, 3},
     {"_SpiecEasi_SOFTTHRESH2", (DL_FUNC) &_SpiecEasi_SOFTTHRESH2, 3},
     {"_SpiecEasi_svdPowSym", (DL_FUNC) &_SpiecEasi_svdPowSym, 6},
+    {"_SpiecEasi_svdPowSym2", (DL_FUNC) &_SpiecEasi_svdPowSym2, 2},
     {"_SpiecEasi_softSVT3", (DL_FUNC) &_SpiecEasi_softSVT3, 3},
     {"_SpiecEasi_softSVT2", (DL_FUNC) &_SpiecEasi_softSVT2, 3},
+    {"_SpiecEasi_SVD2", (DL_FUNC) &_SpiecEasi_SVD2, 1},
     {"_SpiecEasi_ADMM", (DL_FUNC) &_SpiecEasi_ADMM, 15},
-    {"_SpiecEasi_MATAVE2", (DL_FUNC) &_SpiecEasi_MATAVE2, 2},
-    {"_SpiecEasi_MATAVE3", (DL_FUNC) &_SpiecEasi_MATAVE3, 3},
     {"_SpiecEasi_sqrtmNewt", (DL_FUNC) &_SpiecEasi_sqrtmNewt, 3},
     {"_SpiecEasi_solveCpp", (DL_FUNC) &_SpiecEasi_solveCpp, 2},
     {"_SpiecEasi_SOFTTHRESH", (DL_FUNC) &_SpiecEasi_SOFTTHRESH, 3},
     {"_SpiecEasi_softSVT", (DL_FUNC) &_SpiecEasi_softSVT, 3},
-    {"LPGM_neighborhood", (DL_FUNC) &LPGM_neighborhood, 9},
     {NULL, NULL, 0}
 };
 
