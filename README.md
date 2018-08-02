@@ -298,6 +298,10 @@ We can treat unobserved covariates as low rank and spread out, we can disentangl
 Lets compare our SpiecEasi methods on the first two rounds of the American gut dataset.
 
 ```r
+install_github("zdk123/SpiecEasi", ref='lowrank')
+library(SpiecEasi)
+data(amgut1.filt)
+data(amgut2.filt.phy)
 args <- list(ncores=4)
 
 se1 <- list(
@@ -433,6 +437,3 @@ getStability(se)
 sum(getRefit(se))/2
 # [1] 206
 ```
-
-
-
