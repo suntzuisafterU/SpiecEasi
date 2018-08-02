@@ -20,7 +20,8 @@ Imports:
    pulsar,
    MASS,
    VGAM,
-   Matrix
+   Matrix,
+   glmnet
 Suggests:
    parallel,
    boot,

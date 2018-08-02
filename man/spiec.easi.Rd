@@ -3,14 +3,11 @@
 \name{spiec.easi}
 \alias{spiec.easi}
 \alias{spiec.easi.phyloseq}
-\alias{spiec.easi.phyloseq}
 \alias{spiec.easi.otu_table}
 \alias{spiec.easi.default}
 \title{SPIEC-EASI}
 \usage{
 spiec.easi(data, ...)
-
-\method{spiec.easi}{phyloseq}(data, ...)
 
 \method{spiec.easi}{phyloseq}(data, ...)
 

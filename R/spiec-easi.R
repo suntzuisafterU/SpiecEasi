@@ -16,14 +16,6 @@ spiec.easi <- function(data, ...) {
   UseMethod('spiec.easi', data)
 }
 
-#' @rdname spiec.easi
-#' @import phyloseq
-spiec.easi.phyloseq <- function(data, ...) {
-  OTU <- otu_table(data)@.Data
-  if (otu_table(data)@taxa_are_rows) OTU <- t(OTU)
-  spiec.easi.default(OTU, ...)
-}
-
 #' @keywords internal
 .phy2mat <- function(OTU) {
   if (inherits(OTU, 'phyloseq'))
@@ -203,6 +195,9 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
                   },
 
         ising  = {
+                    if (inherits(data, 'list'))
+                      stop('method "ising" does not support list data')
+
                     message(msg, appendLF=verbose)
                     estFun <- "neighborhood.net"
                     args$method <- method
@@ -212,6 +207,9 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
                   },
 
         poisson= {
+                  if (inherits(data, 'list'))
+                    stop('method "poisson" does not support list data')
+
                     message(msg, appendLF=verbose)
                     estFun <- "neighborhood.net"
                     args$method <- method
