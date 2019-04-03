@@ -29,8 +29,6 @@ Suggests:
    igraph,
    batchtools,
    testthat
-Remotes:
-   bioc::phyloseq
 biocViews:
 License: GPL (>= 2)
 LazyData: true
