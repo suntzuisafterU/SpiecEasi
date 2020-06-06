@@ -175,9 +175,9 @@ spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',
 
   if (is.null(args[[ "lambda" ]])) {
     if (is.null(args[[ "lambda.min.ratio" ]])) args$lambda.min.ratio <- 1e-3
-    if (is.null(args[[ "nlambda" ]])) args$nlambda <- 20
+    if (is.null(args[[ "nlambda" ]])) args$nlambda <- 20 # Aaron: number of lambdas to try?
     args$lambda <- pulsar::getLamPath(args$lambda.max, args$lambda.max*args$lambda.min.ratio,
-                              args$nlambda, log=TRUE)
+                              args$nlambda, log=TRUE) # Aaron: log?
     args$lambda.min.ratio <- args$nlambda <- args$lambda.max <- NULL
   }
 

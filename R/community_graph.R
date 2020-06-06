@@ -6,9 +6,10 @@
 #' @export
 prec2cov <- function(Precision, tol=1e-4) {
     eigval <- eigen(Precision)$values
-    if (any(eigval < tol)) {
+    if (any(eigval < tol)) { # All e-vals must be positive and larger than tol.
+                             # Positive as in positive-semi definite?
         warning("Warning: Precision matrix not invertible, trying generalized inverse instead")
-        ginv(Precision)
+        ginv(Precision) # Aaron: Moore-Penrose generalized inverse.
     } else {
         solve(Precision)
     }

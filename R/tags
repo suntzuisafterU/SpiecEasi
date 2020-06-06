@@ -1,0 +1,418 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/1c004b3/
+.binSearchCond	community_graph.R	/^.binSearchCond <- function(Theta, condTheta, numBinSearch, epsBin) {$/;"	f
+.check_pulsar_params	spiec-easi.R	/^.check_pulsar_params <- function(fun, args=list()) {$/;"	f
+.data.checks	spiec-easi.R	/^.data.checks <- function(data) {$/;"	f
+.fixInf	mvdistributions.R	/^.fixInf <- function(data) {$/;"	f
+.negbin_getK	mvdistributions.R	/^.negbin_getK <- function(mu, S) {$/;"	f
+.phy2mat	spiec-easi.R	/^.phy2mat <- function(OTU) {$/;"	f
+.spiec.easi.norm	spiec-easi.R	/^.spiec.easi.norm <- function(data) {$/;"	f
+.zinegbin_getK	mvdistributions.R	/^.zinegbin_getK <- function(mu, S, lam) {$/;"	f
+.zinegbin_getLam	mvdistributions.R	/^.zinegbin_getLam <- function(mu, S) {$/;"	f
+.zinegbin_getP	mvdistributions.R	/^.zinegbin_getP <- function(mu, lam) {$/;"	f
+.zipois_getLam	mvdistributions.R	/^.zipois_getLam <- function(mu, S) {$/;"	f
+.zipois_getP	mvdistributions.R	/^.zipois_getP <- function(mu, S) {$/;"	f
+C_from_V	spaRcc.R	/^C_from_V <- function(T, Vbase) {$/;"	f
+C_temp	spaRcc.R	/^    C_temp <- abs(Cor - diag(diag(Cor)) )  # abs value \/ remove diagonal$/;"	v	function:exclude_pairs
+Call	fitdistr.R	/^    Call <- match.call(expand.dots = TRUE)$/;"	v	function:fitdistr
+Cor	mvdistributions.R	/^    Cor <- cov2cor(Sigma)$/;"	v	function:rmvnegbin
+Cor	mvdistributions.R	/^    Cor <- cov2cor(Sigma)$/;"	v	function:rmvpois
+Cor	mvdistributions.R	/^    Cor <- cov2cor(Sigma)$/;"	v	function:rmvzinegbin
+Cor	mvdistributions.R	/^    Cor <- cov2cor(Sigma)$/;"	v	function:rmvzipois
+Cor	spaRcc.R	/^    Cor    <- cbase$Cor$/;"	v	function:basis_cov
+Cor	spaRcc.R	/^    Cor    <- cbase$Cor$/;"	v	function:sparccinner
+CorMat	spaRcc.R	/^    CorMat <- cov2cor(CovMat)$/;"	v	function:C_from_V
+Cov	spaRcc.R	/^    Cov    <- cbase$Cov$/;"	v	function:basis_cov
+Cov	spaRcc.R	/^    Cov    <- cbase$Cov$/;"	v	function:sparccinner
+CovMat	spaRcc.R	/^    CovMat <- .5*((J %*% Vdiag) + (Vdiag %*% J) - T)$/;"	v	function:C_from_V
+CovVec	spaRcc.R	/^    CovVec <- matrix(rowSums(CovMat - diag(diag(CovMat)))) # row sum of off diagonals$/;"	v	function:basis_var
+D	community_graph.R	/^    D      <- nrow(Graph)$/;"	v	function:enforceE
+D	community_graph.R	/^    D <- diag(rowSums(G))$/;"	v	functionVar:enforceE.scale_free.eigGraph
+D	fitdistr.R	/^    D <- nrow(comm)$/;"	v	function:synth_comm_from_counts
+Ghub	community_graph.R	/^        Ghub  <- matrix(1, nHubs, nHubs)$/;"	v	functionVar:enforceE.scale_free.block
+Graph	community_graph.R	/^    Graph    <- graphgen(D, e=e, ...)$/;"	v	function:make_graph
+Graph	community_graph.R	/^    Graph   <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.band
+Graph	community_graph.R	/^    Graph   <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.cluster
+Graph	community_graph.R	/^    Graph   <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.hub
+Graph	community_graph.R	/^    Graph <- Gtemp + t(Gtemp)$/;"	v	functionVar:enforceE.scale_free.erdos_renyi
+Graph	community_graph.R	/^    Graph <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free
+Graph	community_graph.R	/^    Graph <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.block
+Gtemp	community_graph.R	/^    Gtemp <- matrix(runif(D^2, 0,1), D, D)$/;"	v	functionVar:enforceE.scale_free.erdos_renyi
+J	spaRcc.R	/^    J      <- matrix(1, nrow(T), ncol(T))$/;"	v	function:C_from_V
+J	spaRcc.R	/^    J <- matrix(1, ncol(data), ncol(data))$/;"	v	function:av
+K	spaRcc.R	/^        K <- M$/;"	v	function:sparccinner
+K_mat	community_graph.R	/^    K_mat <- matrix(0, D)   # keep track of the number of degrees in the graph$/;"	v	functionVar:enforceE.scale_free
+L	community_graph.R	/^    L <- D-G$/;"	v	functionVar:enforceE.scale_free.eigGraph
+LOG	normalization.R	/^    LOG <- log(ifelse(nzero, x.f, 1), base)$/;"	v	function:clr.default
+LOG	normalization.R	/^    LOG <- log(ifelse(zero, x.f, 1), base)$/;"	v	function:alr.default
+LOG	normalization.R	/^    LOG <- log(ifelse(zero, x.f, 1), base)$/;"	v	function:alr.matrix
+M	spaRcc.R	/^    M      <- res.bv$M$/;"	v	function:basis_cov
+M	spaRcc.R	/^    M      <- res.bv$M$/;"	v	function:sparccinner
+M.I	spaRcc.R	/^    M.I <- tryCatch(solve(M), error=function(e) MASS::ginv(M))$/;"	v	function:basis_var
+Precision	community_graph.R	/^    Precision <- tryCatch(solve(Cov), error = function(e) {$/;"	v	function:cov2prec
+ROC	roc.R	/^    ROC = list()$/;"	v	function:huge.pr
+SDs	mvdistributions.R	/^    SDs <- sqrt(diag(Sigma))$/;"	v	function:rmvnegbin
+SDs	mvdistributions.R	/^    SDs <- sqrt(diag(Sigma))$/;"	v	function:rmvpois
+SDs	mvdistributions.R	/^    SDs <- sqrt(diag(Sigma))$/;"	v	function:rmvzinegbin
+SDs	mvdistributions.R	/^    SDs <- sqrt(diag(Sigma))$/;"	v	function:rmvzipois
+T	spaRcc.R	/^    T <- av(data.f)$/;"	v	function:basis_cov
+Theta	community_graph.R	/^    Theta <- Graph + diag(n)$/;"	v	function:graph2prec
+Ti	spaRcc.R	/^    Ti     <- matrix(rowSums(T))$/;"	v	function:basis_var
+Vbase	spaRcc.R	/^    Vbase  <- res.bv$Vbase$/;"	v	function:basis_cov
+Vbase	spaRcc.R	/^    Vbase  <- res.bv$Vbase$/;"	v	function:sparccinner
+Vbase	spaRcc.R	/^    Vbase <- M.I %*% (Ti + 2*CovVec)$/;"	v	function:basis_var
+Vdiag	spaRcc.R	/^    Vdiag  <- diag(c(Vbase))$/;"	v	function:C_from_V
+X	mvdistributions.R	/^    X <- matrix(rnorm(p * n), n)$/;"	v	function:rmvnorm
+X	spiec-easi.R	/^                    X <- .spiec.easi.norm(data)$/;"	v	function:spiec.easi.default
+adj2igraph	plotNet.R	/^adj2igraph <- function(Adj, rmEmptyNodes=FALSE, diag=FALSE, edge.attr=list(),$/;"	f
+aitvar	spaRcc.R	/^            aitvar <- x$t0[i]$/;"	v	functionVar:pval.sparccboot.anonFunc3308b2c10404
+allforms	spiec-easi.R	/^  allforms <- setdiff(names(forms), nargs)$/;"	v	function:.check_pulsar_params
+alr	normalization.R	/^alr <- function(x.f, ...) {$/;"	f
+alr.data.frame	normalization.R	/^alr.data.frame <- function(x.f, mar=2, ...) {$/;"	f
+alr.default	normalization.R	/^alr.default <- function(x.f, divcomp=1, base=exp(1), removeDivComp=TRUE,$/;"	f
+alr.matrix	normalization.R	/^alr.matrix <- function(x.f, mar=2, divcomp=1, base=exp(1), removeDivComp=TRUE,$/;"	f
+anonFunc0576045b0104	mvdistributions.R	/^        lambdas <- unlist(lapply(1:length(SDs), function(i) .zipois_getLam(mu[i], SDs[i])))$/;"	v	function:rmvzipois
+anonFunc0576045b0204	mvdistributions.R	/^        ps   <- unlist(lapply(1:length(SDs), function(i) .zipois_getP(mu[i], SDs[i])))$/;"	v	function:rmvzipois
+anonFunc0576045b0304	mvdistributions.R	/^        ks   <- unlist(lapply(1:length(SDs), function(i) .negbin_getK(mu[i], SDs[i])))$/;"	v	function:rmvnegbin
+anonFunc0576045b0404	mvdistributions.R	/^        munbs <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getLam(mu[i], SDs[i])))$/;"	v	function:rmvzinegbin
+anonFunc0576045b0504	mvdistributions.R	/^        ps   <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getP(mu[i], munbs[i])))$/;"	v	function:rmvzinegbin
+anonFunc0576045b0604	mvdistributions.R	/^        ks   <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getK(mu[i], SDs[i], munbs[i])/;"	v	function:rmvzinegbin
+anonFunc0576045b0704	mvdistributions.R	/^       data <-  apply(data, 2, function(x) {$/;"	v	function:.fixInf
+anonFunc104c73090104	roc.R	/^ lapply(path, function(i) merge > i)$/;"	v	function:merge2path
+anonFunc3308b2c10104	spaRcc.R	/^    sparccs <- lapply(1:iter, function(i)$/;"	v	function:sparcc
+anonFunc3308b2c10204	spaRcc.R	/^    cors <- array(unlist(lapply(sparccs, function(x) x$Cor)),$/;"	v	function:sparcc
+anonFunc3308b2c10304	spaRcc.R	/^    covs <- array(unlist(lapply(sparccs, function(x) x$Cov)),$/;"	v	function:sparcc
+anonFunc3308b2c10404	spaRcc.R	/^    outofrange <- unlist(lapply(1:length(x$t0), function(i) {$/;"	v	function:pval.sparccboot
+anonFunc3308b2c10504	spaRcc.R	/^    bs_above <- unlist(lapply(1:nparams, function(i)$/;"	v	function:pval.sparccboot
+anonFunc3308b2c10604	spaRcc.R	/^    M.I <- tryCatch(solve(M), error=function(e) MASS::ginv(M))$/;"	v	function:basis_var
+anonFuncb5d2704e0104	fitdistr.R	/^    apply(comm, mar, function(x) {$/;"	v	function:get_comm_params
+anonFuncb5d2704e0204	fitdistr.R	/^            fit <- t(sapply(1:nrow(comm), function(i) qqdplot(comm[i,], distr=distr, param=param/;"	v	function:qqdplot_comm
+anonFunce8116fdb0104	community_graph.R	/^    Precision <- tryCatch(solve(Cov), error = function(e) {$/;"	v	function:cov2prec
+ans	mvdistributions.R	/^    ans <- rpois(n, lambda)$/;"	v	function:rzipois
+args	SparseICov.R	/^  args <- list(...)$/;"	v	function:sparseiCov
+args	spiec-easi.R	/^  args <- list(...)$/;"	v	function:spiec.easi.default
+argstr	spiec-easi.R	/^    argstr <- paste0(paste0("'", extrargs, "'"), collapse=", ")$/;"	v	function:.check_pulsar_params
+as.data.frame.graph	community_graph.R	/^as.data.frame.graph <- function(x, ...) {$/;"	v	functionVar:enforceE.scale_free
+as.matrix.graph	community_graph.R	/^as.matrix.graph <- function(x, ...) {$/;"	v	functionVar:enforceE.scale_free
+attr	plotNet.R	/^            attr <- names(vertex.attr)[i]$/;"	v	function:adj2igraph
+av	spaRcc.R	/^av <- function(data) {$/;"	f
+band	community_graph.R	/^band <- function(D, e) {$/;"	v	functionVar:enforceE.scale_free
+basis_cov	spaRcc.R	/^basis_cov <- function(data.f) {$/;"	f
+basis_var	spaRcc.R	/^basis_var <- function(T, CovMat = matrix(0, nrow(T), ncol(T)),$/;"	f
+bestFit	community_graph.R	/^        bestFit <- Inf$/;"	v	functionVar:enforceE.scale_free.block
+bestFit	community_graph.R	/^    bestFit <- FALSE$/;"	v	functionVar:enforceE.scale_free.band
+bestNHubs	community_graph.R	/^                bestNHubs   <- nHubs$/;"	v	functionVar:enforceE.scale_free.block
+bestNumHubs	community_graph.R	/^                bestNumHubs <- numHubs$/;"	v	functionVar:enforceE.scale_free.block
+block	community_graph.R	/^block <- function(D, e, numHubs) {  #blocksize=20, p=D\/((D\/blocksize)*(blocksize*(blocksize)\//;"	v	functionVar:enforceE.scale_free
+blockid	community_graph.R	/^    blockid  <- factor(sample(1:numHubs, D, replace=TRUE))$/;"	v	functionVar:enforceE.scale_free.block
+blockind	community_graph.R	/^    blockind <- split(1:D, blockid)$/;"	v	functionVar:enforceE.scale_free.block
+boolind	community_graph.R	/^    boolind <- sample(c(TRUE, FALSE), length(nzind), replace=TRUE)$/;"	v	function:graph2prec
+boot_ord	spaRcc.R	/^    boot_ord <- apply(x$t, 2, sort)$/;"	v	function:pval.sparccboot
+boot_ord95	spaRcc.R	/^    boot_ord95 <- boot_ord[ind95,]$/;"	v	function:pval.sparccboot
+break_flag	spaRcc.R	/^    break_flag <- FALSE$/;"	v	function:exclude_pairs
+bs_above	spaRcc.R	/^    bs_above <- unlist(lapply(1:nparams, function(i)$/;"	v	function:pval.sparccboot
+call	spiec-easi.R	/^    call <- quote(batch.pulsar(data=X, fun=match.fun(estFun), fargs=args))$/;"	v	function:spiec.easi.default
+cbase	spaRcc.R	/^    cbase  <- C_from_V(T, Vbase)$/;"	v	function:basis_cov
+cbase	spaRcc.R	/^    cbase  <- C_from_V(T, Vbase)$/;"	v	function:sparccinner
+classes	spiec-easi.R	/^  classes <- sapply(data, class)$/;"	v	function:spiec.easi.list
+clr	normalization.R	/^clr <- function(x.f, ...) {$/;"	f
+clr.data.frame	normalization.R	/^clr.data.frame <- function(x.f, mar=2, ...) {$/;"	f
+clr.default	normalization.R	/^clr.default <- function(x.f, base=exp(1), tol=.Machine$double.eps, ...) {$/;"	f
+clr.matrix	normalization.R	/^clr.matrix <- function(x.f, mar=2, ...) {$/;"	f
+cluster	community_graph.R	/^cluster <- function(D, e, numHubs=floor((D\/15)+(e\/D))-1) {$/;"	v	functionVar:enforceE.scale_free
+condCov	community_graph.R	/^    condCov <- kappa(Cov)$/;"	v	functionVar:enforceE.scale_free.covReport
+condPrec	community_graph.R	/^    condPrec <- kappa(Prec)$/;"	v	functionVar:enforceE.scale_free.covReport
+conn	community_graph.R	/^            conn <- sample(c(TRUE, FALSE), 1, prob=c(p, 1-p))$/;"	v	functionVar:enforceE.scale_free
+cor2cov	mvdistributions.R	/^cor2cov <- function(cor, sds) {$/;"	f
+corMed	spaRcc.R	/^    corMed <- apply(cors, 1:2, median)$/;"	v	function:sparcc
+corr	community_graph.R	/^    corr  <- cov2cor(Cov)$/;"	v	functionVar:enforceE.scale_free.covReport
+corrStats	community_graph.R	/^    corrStats <- t(data.frame(minC, meanC, medianC, maxC))$/;"	v	functionVar:enforceE.scale_free.covReport
+cors	spaRcc.R	/^    cors <- array(unlist(lapply(sparccs, function(x) x$Cor)),$/;"	v	function:sparcc
+cors	spaRcc.R	/^    cors <- x$t0$/;"	v	function:pval.sparccboot
+cov.clr	spaRcc.R	/^    cov.clr <- cov(clr(data))$/;"	v	function:av
+cov2prec	community_graph.R	/^cov2prec <- function(Cov, tol=1e-4) {$/;"	f
+covMed	spaRcc.R	/^    covMed <- apply(covs, 1:2, median)$/;"	v	function:sparcc
+covReport	community_graph.R	/^covReport <- function(Cov, Prec) {$/;"	v	functionVar:enforceE.scale_free
+covs	spaRcc.R	/^    covs <- array(unlist(lapply(sparccs, function(x) x$Cov)),$/;"	v	function:sparcc
+currCondTheta	community_graph.R	/^    currCondTheta <- kappa(Theta)$/;"	v	function:.binSearchCond
+currFit	community_graph.R	/^            currFit <- abs(nHubs*(nHubs-1)\/2*numHubs - e)$/;"	v	functionVar:enforceE.scale_free.block
+currLB	community_graph.R	/^        currLB   <- -max(diag(Theta))$/;"	v	function:.binSearchCond
+currUB	community_graph.R	/^        currUB <- stepSize$/;"	v	function:.binSearchCond
+d	mvdistributions.R	/^    d   <- length(SDs)$/;"	v	function:rmvpois
+d	mvdistributions.R	/^    d   <- length(mu)$/;"	v	function:rmvnegbin
+d	mvdistributions.R	/^    d   <- length(munbs)$/;"	v	function:rmvzinegbin
+d	mvdistributions.R	/^    d   <- ncol(Sigma)$/;"	v	function:rmvzipois
+d	roc.R	/^    d = ncol(theta)$/;"	v	function:huge.pr
+data	fitdistr.R	/^      data <- rmvzinegbin(n, ks=paramat$size, munbs=paramat$munb,$/;"	v	function:synth_comm_from_counts
+data	mvdistributions.R	/^    data <- matrix(VGAM::qzinegbin(unif, munb=munbs, size=ks, pstr0=ps, ...), n, d)$/;"	v	function:rmvzinegbin
+data	mvdistributions.R	/^    data <- matrix(VGAM::qzipois(unif, lambdas, pstr0=ps, ...), n, d)$/;"	v	function:rmvzipois
+data	mvdistributions.R	/^    data <- matrix(qpois(unif, mu, ...), n, d)$/;"	v	function:rmvpois
+data	mvdistributions.R	/^    data <- t(qnbinom(t(unif), mu=mu, size=ks, ...))$/;"	v	function:rmvnegbin
+deflat.limit	mvdistributions.R	/^    deflat.limit <- -1\/expm1(lambda)$/;"	v	function:rzipois
+degVec	community_graph.R	/^    degVec <- colSums(Graph)$/;"	v	function:graph2prec
+diagConst	community_graph.R	/^        diagConst <- (currUB+currLB)\/2$/;"	v	function:.binSearchCond
+diagConst	community_graph.R	/^    diagConst <- .binSearchCond(Theta, targetCondition, numBinSearch, epsBin)$/;"	v	function:graph2prec
+diffE	community_graph.R	/^    diffE  <- nedges - e$/;"	v	function:enforceE
+distname	fitdistr.R	/^        distname <- tolower(densfun)$/;"	v	function:fitdistr
+dmat	spaRcc.R	/^    dmat <- VGAM::rdiric(rep, x+1)$/;"	v	function:norm_diric
+dots	fitdistr.R	/^    dots <- names(list(...))$/;"	v	function:fitdistr
+e	normalization.R	/^    e <- length(x)$/;"	v	function:triu2diag
+eHub	community_graph.R	/^    eHub     <- ceiling(e\/numHubs)$/;"	v	functionVar:enforceE.scale_free.cluster
+eS	mvdistributions.R	/^    eS <- eigen(Sigma, symmetric = TRUE)$/;"	v	function:rmvnorm
+edge_count	community_graph.R	/^edge_count <- function(Graph) {$/;"	v	functionVar:enforceE.scale_free
+eigGraph	community_graph.R	/^    eigGraph <- eigGraph(Graph)$/;"	v	functionVar:enforceE.scale_free.graphReport
+eigGraph	community_graph.R	/^eigGraph <- function(G, tol=1e-12) {$/;"	v	functionVar:enforceE.scale_free
+eigVals	community_graph.R	/^    eigVals <- eigen(Theta)$values$/;"	v	function:graph2prec
+eigsG	community_graph.R	/^    eigsG   <- eigen(L)$values$/;"	v	functionVar:enforceE.scale_free.eigGraph
+eigval	community_graph.R	/^    eigval <- eigen(Precision)$values$/;"	v	function:prec2cov
+enforceE	community_graph.R	/^enforceE <- function(Graph, e) {$/;"	f
+erdos_renyi	community_graph.R	/^erdos_renyi <- function(D, e, p=e\/(D*(D-1)\/2)) {$/;"	v	functionVar:enforceE.scale_free
+est	SparseICov.R	/^  est <- do.call(huge::huge, c(args, list(x=data,$/;"	v	function:sparseiCov
+est	spiec-easi.R	/^    est <- eval(call, environment())$/;"	v	function:spiec.easi.default
+estFun	spiec-easi.R	/^                    estFun <- "sparseiCov"$/;"	v	function:spiec.easi.default
+estimate	fitdistr.R	/^        estimate <- mean(x) \/ (1 - pstr0)$/;"	v	function:fitdistr
+ev	mvdistributions.R	/^    ev <- eS$values$/;"	v	function:rmvnorm
+exclude	spaRcc.R	/^    exclude <- which(abs(C_temp - max(C_temp)) < .Machine$double.eps*100)[1:2]$/;"	v	function:exclude_pairs
+exclude_pairs	spaRcc.R	/^exclude_pairs <- function(Cor, M, th=0.1, excluded=NULL) {$/;"	f
+excluded	spaRcc.R	/^    excluded <- NULL$/;"	v	function:sparccinner
+excluded_new	spaRcc.R	/^        excluded_new <- c(excluded, exclude)$/;"	v	function:exclude_pairs
+existnodes	community_graph.R	/^    existnodes <- nodes$/;"	v	functionVar:enforceE.scale_free
+extrargs	spiec-easi.R	/^  extrargs <- intersect(names(args), nargs)$/;"	v	function:.check_pulsar_params
+ff	roc.R	/^    if (!plot) { ff <- tempfile() ; png(filename=ff) }$/;"	v	function:stars.roc
+fit	fitdistr.R	/^            fit <- t(sapply(1:nrow(comm), function(i) qqdplot(comm[i,], distr=distr, param=param/;"	v	function:qqdplot_comm
+fit	spiec-easi.R	/^  fit <- pulsar::refit(est)$/;"	v	function:spiec.easi.default
+fitdistr	fitdistr.R	/^fitdistr <- function (x, densfun, start, control, ...)  {$/;"	f
+flag	spiec-easi.R	/^    flag <- .check_pulsar_params(fun, pulsar.params)$/;"	v	function:spiec.easi.default
+fn	roc.R	/^        fn = 1 - ROC$tp[r]$/;"	v	function:huge.pr
+forms	spiec-easi.R	/^  forms <- formals(fun)$/;"	v	function:.check_pulsar_params
+fp.all	roc.R	/^        fp.all = (theta == 0) * (tmp != 0)$/;"	v	function:huge.pr
+fun	spiec-easi.R	/^    fun <- "batch.pulsar"$/;"	v	function:spiec.easi.default
+g	plotNet.R	/^    g <- igraph::graph.adjacency(Adj, mode = "undirected", weighted = TRUE, diag=diag)$/;"	v	function:adj2igraph
+getOptBeta	utilities.R	/^getOptBeta <- function(est)  getOptX(est, 'beta')$/;"	f
+getOptCov	utilities.R	/^getOptCov <- function(est)   getOptX(est, 'cov')$/;"	f
+getOptInd	utilities.R	/^getOptInd <- function(est)   getOptX(est, 'index')$/;"	f
+getOptLambda	utilities.R	/^getOptLambda <- function(est)   getOptX(est, 'lambda')$/;"	f
+getOptMerge	utilities.R	/^getOptMerge <- function(est) getOptX(est, 'merge')$/;"	f
+getOptNet	utilities.R	/^getOptNet <- function(est)   getOptX(est, 'refit')$/;"	f
+getOptX	utilities.R	/^getOptX <- function(est, ...) {$/;"	f
+getOptX.pulsar.refit	utilities.R	/^getOptX.pulsar.refit <- function(est, getter='index') {$/;"	f
+getOptiCov	utilities.R	/^getOptiCov <- function(est)  getOptX(est, 'icov')$/;"	f
+getRefit	utilities.R	/^getRefit <- function(est)    getOptNet(est)$/;"	f
+getStability	utilities.R	/^getStability <- function(est)  getOptX(est, 'stars')$/;"	f
+get_comm_params	fitdistr.R	/^get_comm_params <- function(comm, mar=2, distr, ...) {$/;"	f
+gind	community_graph.R	/^            gind <- tmpInds[i,]$/;"	v	function:enforceE
+graph2prec	community_graph.R	/^graph2prec <- function(Graph, posThetaLims=c(2,3), negThetaLims=-posThetaLims, targetCondition=1/;"	f
+graphReport	community_graph.R	/^graphReport <- function(Graph) {$/;"	v	functionVar:enforceE.scale_free
+graphgen	community_graph.R	/^    graphgen <- get(method)$/;"	v	function:make_graph
+groupid	community_graph.R	/^    groupid  <- factor(sample(1:numHubs, D, replace=TRUE))$/;"	v	functionVar:enforceE.scale_free.hub
+groupid	community_graph.R	/^    groupid <- factor(sample(rep(1:numHubs, length.out=D)))$/;"	v	functionVar:enforceE.scale_free.cluster
+groupind	community_graph.R	/^    groupind <- split(1:D, groupid)$/;"	v	functionVar:enforceE.scale_free.cluster
+groupind	community_graph.R	/^    groupind <- split(1:D, groupid)$/;"	v	functionVar:enforceE.scale_free.hub
+hub	community_graph.R	/^        hub <- sample(ind, 1)   # pick 1 hub$/;"	v	functionVar:enforceE.scale_free.hub
+hub	community_graph.R	/^hub <- function(D, e, numHubs=ceiling(D\/20)) {$/;"	v	functionVar:enforceE.scale_free
+huge.pr	roc.R	/^huge.pr <- function (path, theta, verbose = TRUE, plot = TRUE) {$/;"	f
+i	community_graph.R	/^        for (i in randi) {$/;"	v	function:enforceE
+i	community_graph.R	/^    for (i in 1:numBinSearch) {$/;"	v	function:.binSearchCond
+i	plotNet.R	/^        for (i in 1:length(vertex.attr)) {$/;"	v	function:adj2igraph
+i	spaRcc.R	/^        i <- na.exclude(arrayInd(exclude, c(nrow(M), ncol(M)))[,1])$/;"	v	function:exclude_pairs
+i	spaRcc.R	/^    for (i in 1:iter) {$/;"	v	function:sparccinner
+ind	community_graph.R	/^    for (ind in blockind) {$/;"	v	functionVar:enforceE.scale_free.block
+ind	community_graph.R	/^    for (ind in groupind) {$/;"	v	functionVar:enforceE.scale_free.cluster
+ind	community_graph.R	/^    for (ind in groupind) {$/;"	v	functionVar:enforceE.scale_free.hub
+ind	mvdistributions.R	/^                   x[ind<-which(is.infinite(x))] <- NA$/;"	v	functionVar:.fixInf.anonFunc0576045b0704
+ind	plotNet.R	/^        ind <- igraph::V(g)$name[which(igraph::degree(g) < 1)]$/;"	v	function:adj2igraph
+ind0	mvdistributions.R	/^    ind0 <- (deflat.limit <= pstr0) & (pstr0 < 0)$/;"	v	function:rzipois
+ind95	spaRcc.R	/^    ind95    <- max(1,round(.025*niters)):round(.975*niters)$/;"	v	function:pval.sparccboot
+index	plotNet.R	/^            g <- igraph::set.vertex.attribute(g, attr, index=igraph::V(g), vertex.attr[[i]])$/;"	v	function:adj2igraph
+is_above	spaRcc.R	/^    is_above <- bs_above > x$R\/2$/;"	v	function:pval.sparccboot
+k	community_graph.R	/^    k <- 1$/;"	v	functionVar:enforceE.scale_free.band
+lambda	fitdistr.R	/^    lambda <- param['lambda']$/;"	v	function:logLikzip
+list.equal	spiec-easi.R	/^  list.equal <- function(li) sum(duplicated(li)) == length(li)-1$/;"	v	function:spiec.easi.list
+ll	fitdistr.R	/^        ll <- c(list(), fitdistr(x, distr, ...)$par)$/;"	v	functionVar:get_comm_params.anonFuncb5d2704e0104
+log	fitdistr.R	/^    (-sum(VGAM::dzinegbin(x, munb=munb, pstr0=pstr0, size=size, log=TRUE, ...)))$/;"	v	function:logLikzinb
+log	fitdistr.R	/^    -sum(VGAM::dzipois(x, lambda=lambda, pstr0=pstr0, log=TRUE, ...))$/;"	v	function:logLikzip
+log	spiec-easi.R	/^                              args$nlambda, log=TRUE) # Aaron: log?$/;"	v	function:spiec.easi.default
+logLiknb	fitdistr.R	/^logLiknb <- function(param, x, ...) {$/;"	f
+logLikzinb	fitdistr.R	/^logLikzinb <- function(param,x,...) {$/;"	f
+logLikzip	fitdistr.R	/^logLikzip <- function(param, x, ddistr, ...) {$/;"	f
+loglikfn	fitdistr.R	/^        loglikfn <- match.fun(logLikzip)$/;"	v	function:fitdistr
+logy	fitdistr.R	/^        logy <- log1p(y)$/;"	v	function:qqdplot
+lot	utilities.R	/^    lot <- t(Matrix::tril(beta))$/;"	v	function:symBeta
+lotind	utilities.R	/^    lotind <- Matrix::which(maxt == abs(lot))$/;"	v	function:symBeta
+lower	fitdistr.R	/^        lower <- c(1e-4, 0)$/;"	v	function:fitdistr
+m	fitdistr.R	/^        m <- mean(x)$/;"	v	function:fitdistr
+main	fitdistr.R	/^        if (!('main' %in% names(list(...)))) main = 'QQ-plot'$/;"	v	function:qqdplot_comm
+make_graph	community_graph.R	/^make_graph <- function(method, D, e, enforce=TRUE, ...) {$/;"	f
+mapToRange	community_graph.R	/^    mapToRange <- function(x, lim) {$/;"	v	function:graph2prec
+mat	normalization.R	/^    mat <- matrix(0, n, n)$/;"	v	function:triu2diag
+max	fitdistr.R	/^        max <- abs(length(whichz) - length(which1))$/;"	v	function:fitdistr
+maxC	community_graph.R	/^    maxC  <- max(corr)$/;"	v	functionVar:enforceE.scale_free.covReport
+maxEig	community_graph.R	/^    maxEig  <- max(eigVals)$/;"	v	function:graph2prec
+maxt	utilities.R	/^    suppressMessages(maxt <- pmax(abs(upt), abs(lot)))$/;"	v	function:symBeta
+mean	fitdistr.R	/^        mean <- mean(logy)$/;"	v	function:qqdplot
+meanC	community_graph.R	/^    meanC <- mean(corr)$/;"	v	functionVar:enforceE.scale_free.covReport
+meanlog	fitdistr.R	/^        meanlog <- mean(log(x))$/;"	v	function:fitdistr
+medianC	community_graph.R	/^    medianC <- median(corr)$/;"	v	functionVar:enforceE.scale_free.covReport
+merge2path	roc.R	/^merge2path <- function(merge, length.out) {$/;"	f
+minC	community_graph.R	/^    minC  <- min(corr)$/;"	v	functionVar:enforceE.scale_free.covReport
+minEig	community_graph.R	/^    minEig  <- min(eigVals)$/;"	v	function:graph2prec
+mode	plotNet.R	/^    g <- igraph::graph.adjacency(Adj, mode = "undirected", weighted = TRUE, diag=diag)$/;"	v	function:adj2igraph
+msg	spiec-easi.R	/^  if (verbose) msg <- .makeMessage("Applying data transformations...")$/;"	v	function:spiec.easi.default
+multi.spiec.easi	spiec-easi.R	/^multi.spiec.easi <- function(datalist, method='glasso', sel.criterion='stars',$/;"	f
+munb	fitdistr.R	/^    munb  <- param['munb']$/;"	v	function:logLikzinb
+munb	fitdistr.R	/^    munb <- param['mu']$/;"	v	function:logLiknb
+munb	mvdistributions.R	/^    data <- matrix(VGAM::qzinegbin(unif, munb=munbs, size=ks, pstr0=ps, ...), n, d)$/;"	v	function:rmvzinegbin
+n	community_graph.R	/^    n <- ncol(Graph)$/;"	v	function:graph2prec
+n	community_graph.R	/^    n <- nrow(Theta)$/;"	v	function:.binSearchCond
+n	fitdistr.R	/^    n <- length(x)$/;"	v	function:fitdistr
+n	fitdistr.R	/^    n <- length(y)$/;"	v	function:qqdplot
+n	normalization.R	/^    n <- .5 * (sqrt(8*e + 1)+1)$/;"	v	function:triu2diag
+n1	community_graph.R	/^        n1 <- na.exclude(newnodes)[1]$/;"	v	functionVar:enforceE.scale_free
+n2	community_graph.R	/^        for (n2 in existnodes)  { # and a node already in the graph$/;"	v	functionVar:enforceE.scale_free
+nCC	community_graph.R	/^    nCC <- sum(eigsG < tol)$/;"	v	functionVar:enforceE.scale_free.eigGraph
+nHub	community_graph.R	/^        nHub <- length(ind)$/;"	v	functionVar:enforceE.scale_free.cluster
+nHubs	community_graph.R	/^            nHubs   <- round(D\/numHubs)$/;"	v	functionVar:enforceE.scale_free.block
+nargs	spiec-easi.R	/^  nargs    <- c("data", "fun", "fargs", "criterion")$/;"	v	function:.check_pulsar_params
+nedges	community_graph.R	/^    nedges   <- edge_count(Graph)$/;"	v	functionVar:enforceE.scale_free.graphReport
+nedges	community_graph.R	/^    nedges <- edge_count(Graph)$/;"	v	function:enforceE
+neff	normalization.R	/^neff <- function(x) exp(shannon(x))$/;"	f
+neg.total	roc.R	/^    neg.total = d * (d - 1) - pos.total$/;"	v	function:huge.pr
+newnodes	community_graph.R	/^    newnodes <- setdiff(1:D, nodes)$/;"	v	functionVar:enforceE.scale_free
+niters	spaRcc.R	/^    niters   <- nrow(x$t)$/;"	v	function:pval.sparccboot
+nodes	community_graph.R	/^        nodes <- setdiff(ind, hub)$/;"	v	functionVar:enforceE.scale_free.hub
+nodes	community_graph.R	/^    nodes <- sample(1:D, 2)$/;"	v	functionVar:enforceE.scale_free
+norm_diric	spaRcc.R	/^norm_diric   <- function(x, rep=1) {$/;"	f
+norm_pseudo	normalization.R	/^norm_pseudo  <- function(x) norm_to_total(x+1)$/;"	f
+norm_to_total	normalization.R	/^norm_to_total <- function(x) x\/sum(x)$/;"	f
+normd	mvdistributions.R	/^    normd  <- rmvnorm(n, rep(0, d), Cor)$/;"	v	function:rmvpois
+normd	mvdistributions.R	/^    normd  <- rmvnorm(n, rep(0, d), Cor)$/;"	v	function:rmvzipois
+normd	mvdistributions.R	/^    normd  <- rmvnorm(n, rep(0, d), Sigma=Cor)$/;"	v	function:rmvnegbin
+normd	mvdistributions.R	/^    normd  <- rmvnorm(n, rep(0, d), Sigma=Cor)$/;"	v	function:rmvzinegbin
+nparams	spaRcc.R	/^    nparams  <- ncol(x$t)$/;"	v	function:pval.sparccboot
+null_av	spaRcc.R	/^    null_av <- boot::boot(data, statisticperm, sim='permutation', R=R, parallel="multicore", ncp/;"	v	function:sparccboot
+nzero	normalization.R	/^    nzero <- (x.f >= tol)$/;"	v	function:clr.default
+nzind	community_graph.R	/^    nzind <- which(utri != 0)$/;"	v	function:graph2prec
+obj	spiec-easi.R	/^    obj <- list(call=call)$/;"	v	function:spiec.easi.default
+ocall	spiec-easi.R	/^  ocall <- match.call(expand.dots=FALSE)$/;"	v	function:spiec.easi.default
+off1	community_graph.R	/^        off1    <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.band
+off2	community_graph.R	/^        off2    <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.band
+oneInds	community_graph.R	/^        oneInds <- which(Graph == 1)$/;"	v	function:enforceE
+opt.index	spiec-easi.R	/^      opt.index <- pulsar::opt.index(est) <- pulsar::get.opt.index(est, 'gcd')$/;"	v	function:spiec.easi.default
+ord.p	roc.R	/^    ord.p = order(ROC$prec, na.last=NA)$/;"	v	function:huge.pr
+outofrange	spaRcc.R	/^    outofrange <- unlist(lapply(1:length(x$t0), function(i) {$/;"	v	function:pval.sparccboot
+p	community_graph.R	/^            p <- pfun(K_mat, n2)$/;"	v	functionVar:enforceE.scale_free
+p	community_graph.R	/^        p    <- eHub\/(nHub*(nHub-1)\/2)$/;"	v	functionVar:enforceE.scale_free.cluster
+p	mvdistributions.R	/^    p <- length(mu)$/;"	v	function:rmvnorm
+parallel	spaRcc.R	/^    res     <- boot::boot(data, statisticboot, R=R, parallel="multicore", ncpus=ncpus, ...)$/;"	v	function:sparccboot
+paramat	fitdistr.R	/^    paramat <- do.call('rbind', params)$/;"	v	function:synth_comm_from_counts
+path	roc.R	/^    path <- unique(c(merge))$/;"	v	function:merge2path
+pobs0	mvdistributions.R	/^        pobs0 <- pstr0[ind0] + (1 - pstr0[ind0]) * pstr0[ind0]$/;"	v	function:rzipois
+pos.total	roc.R	/^    pos.total = sum(theta != 0)$/;"	v	function:huge.pr
+prec2cov	community_graph.R	/^prec2cov <- function(Precision, tol=1e-4) {$/;"	f
+precision	roc.R	/^        precision = ROC$tp[r]\/(ROC$tp[r] + ROC$fp[r])$/;"	v	function:huge.pr
+prob0	mvdistributions.R	/^    prob0 <- exp(-lambda)$/;"	v	function:rzipois
+pstr0	fitdistr.R	/^        pstr0  <- length(which(x == 0)) \/ length(x)$/;"	v	function:fitdistr
+pstr0	fitdistr.R	/^    pstr0  <- param['pstr0']$/;"	v	function:logLikzip
+pstr0	fitdistr.R	/^    pstr0 <- param['pstr0']$/;"	v	function:logLikzinb
+pstr0	mvdistributions.R	/^    data <- matrix(VGAM::qzinegbin(unif, munb=munbs, size=ks, pstr0=ps, ...), n, d)$/;"	v	function:rmvzinegbin
+pstr0	mvdistributions.R	/^    data <- matrix(VGAM::qzipois(unif, lambdas, pstr0=ps, ...), n, d)$/;"	v	function:rmvzipois
+pval.sparccboot	spaRcc.R	/^pval.sparccboot <- function(x, sided='both') {$/;"	f
+pvals	spaRcc.R	/^    pvals    <- ifelse(is_above, 2*(1-bs_above\/x$R), 2*bs_above\/x$R)$/;"	v	function:pval.sparccboot
+qqdplot	fitdistr.R	/^qqdplot <- function(y, distr, param, plot=TRUE, ...) {$/;"	f
+qqdplot_comm	fitdistr.R	/^qqdplot_comm <- function(comm, distr, param, plot=TRUE, ...) {$/;"	f
+r	roc.R	/^    for (r in 1:length(path)) {$/;"	v	function:huge.pr
+randi	community_graph.R	/^        randi   <- sample(1:nrow(tmpInds), abs(diffE))$/;"	v	function:enforceE
+rands	community_graph.R	/^    rands <- runif(length(nzind))$/;"	v	function:graph2prec
+range	spaRcc.R	/^            range  <- range(boot_ord95[,i])$/;"	v	functionVar:pval.sparccboot.anonFunc3308b2c10404
+recall	roc.R	/^        recall = ROC$tp[r]\/(ROC$tp[r] + fn)$/;"	v	function:huge.pr
+res	fitdistr.R	/^    res <- optim(start, loglikfn, x=x, method='L-BFGS-B', lower=lower, upper=upper,$/;"	v	function:fitdistr
+res	spaRcc.R	/^    res     <- boot::boot(data, statisticboot, R=R, parallel="multicore", ncpus=ncpus, ...)$/;"	v	function:sparccboot
+res.bv	spaRcc.R	/^    res.bv <- basis_var(T)$/;"	v	function:basis_cov
+res.bv	spaRcc.R	/^    res.bv <- basis_var(T)$/;"	v	function:sparccinner
+res.excl	spaRcc.R	/^        res.excl <- exclude_pairs(Cor, M, th, excluded)$/;"	v	function:sparccinner
+rmvnegbin	mvdistributions.R	/^rmvnegbin <- function(n, mu, Sigma, ks, ...) {$/;"	f
+rmvnorm	mvdistributions.R	/^rmvnorm <- function(n=100, mu=rep(0,10), Sigma=diag(10), tol=1e-6, empirical=TRUE) {$/;"	f
+rmvpois	mvdistributions.R	/^rmvpois <- function(n, mu, Sigma, ...) {$/;"	f
+rmvzinegbin	mvdistributions.R	/^rmvzinegbin <- function(n, mu, Sigma, munbs, ks, ps, ...) {$/;"	f
+rmvzipois	mvdistributions.R	/^rmvzipois <- function(n, mu, Sigma=diag(length(mu)), lambdas, ps, ...) {$/;"	f
+rzipois	mvdistributions.R	/^rzipois <- function(n, lambda, pstr0 = 0) {$/;"	f
+scale_free	community_graph.R	/^scale_free <- function(D, e, pfun) {$/;"	v	function:enforceE
+sd	fitdistr.R	/^        sd   <- sd(logy)$/;"	v	function:qqdplot
+sdlog	fitdistr.R	/^        sdlog   <- sd(log(x))$/;"	v	function:fitdistr
+sds	fitdistr.R	/^        sds  <- sqrt(vars)$/;"	v	function:fitdistr
+shannon	normalization.R	/^shannon <- function(x) {$/;"	f
+sim	spaRcc.R	/^    null_av <- boot::boot(data, statisticperm, sim='permutation', R=R, parallel="multicore", ncp/;"	v	function:sparccboot
+sink	spiec-easi.R	/^    sink <- lapply(data, .data.checks)$/;"	v	function:.data.checks
+size	fitdistr.R	/^            if (v > n) size <- m^2\/(v - m)$/;"	v	function:fitdistr
+size	fitdistr.R	/^    size   <- param['size']$/;"	v	function:logLiknb
+size	fitdistr.R	/^    size  <- param['size']$/;"	v	function:logLikzinb
+size	mvdistributions.R	/^    data <- matrix(VGAM::qzinegbin(unif, munb=munbs, size=ks, pstr0=ps, ...), n, d)$/;"	v	function:rmvzinegbin
+snames	spiec-easi.R	/^  snames <- lapply(data, row.names)$/;"	v	function:spiec.easi.list
+span	community_graph.R	/^        span <- diff(sort(lim))$/;"	v	functionVar:graph2prec.mapToRange
+sparcc	spaRcc.R	/^sparcc <- function(data, iter=20, inner_iter=10, th=.1) {$/;"	f
+sparccboot	spaRcc.R	/^sparccboot <- function(data, sparcc.params=list(),$/;"	f
+sparccinner	spaRcc.R	/^sparccinner <- function(data.f, T=NULL, iter=10, th=0.1) {$/;"	f
+sparccs	spaRcc.R	/^    sparccs <- lapply(1:iter, function(i)$/;"	v	function:sparcc
+sparseiCov	SparseICov.R	/^sparseiCov <- function(data, method, npn=FALSE, verbose=FALSE, cov.output = TRUE, ...) {$/;"	f
+specGap	community_graph.R	/^    specGap <- eigsG[which(eigsG > tol)]$/;"	v	functionVar:enforceE.scale_free.eigGraph
+spiec.easi	spiec-easi.R	/^spiec.easi <- function(data, ...) {$/;"	f
+spiec.easi.default	spiec-easi.R	/^spiec.easi.default <- function(data, method='glasso', sel.criterion='stars',$/;"	f
+spiec.easi.list	spiec-easi.R	/^spiec.easi.list <- function(data, ...) {$/;"	f
+spiec.easi.otu_table	spiec-easi.R	/^spiec.easi.otu_table <- function(data, ...) {$/;"	f
+spiec.easi.phyloseq	spiec-easi.R	/^spiec.easi.phyloseq <- function(data, ...) {$/;"	f
+ssizes	spiec-easi.R	/^  ssizes <- lapply(data, nrow)$/;"	v	function:spiec.easi.list
+sstr	spiec-easi.R	/^    sstr <- ifelse(length(extrargs)==1, '', 's')$/;"	v	function:.check_pulsar_params
+stars.pr	roc.R	/^stars.pr <- function(optmerge, theta, verbose = TRUE, plot = TRUE, ll=15) {$/;"	f
+stars.roc	roc.R	/^stars.roc <- function(optmerge, theta, verbose = TRUE, plot = TRUE, ll=15) {$/;"	f
+stepSize	community_graph.R	/^        stepSize <- currLB+.Machine$double.eps$/;"	v	function:.binSearchCond
+symBeta	utilities.R	/^symBeta <- function(beta, mode='ave') {$/;"	f
+symbeta	utilities.R	/^    symbeta <- (beta+t(beta))\/2$/;"	v	function:symBeta
+synth_comm_from_counts	fitdistr.R	/^synth_comm_from_counts <- function(comm, mar=2, distr, Sigma=cov(comm), # TODO: extend this func/;"	f
+t	utilities.R	/^  t <- Matrix::t$/;"	v	function:symBeta
+tempG	community_graph.R	/^        tempG <- Graph + off1 + off2$/;"	v	functionVar:enforceE.scale_free.band
+tempx	fitdistr.R	/^        tempx   <- x[-zind]$/;"	v	function:fitdistr
+tmeans	spaRcc.R	/^    tmeans   <- colMeans(x$null_av$t)$/;"	v	function:pval.sparccboot
+tmp	roc.R	/^        tmp = as.matrix(path[[r]])$/;"	v	function:huge.pr
+tmp	roc.R	/^    tmp <- huge::huge.roc(merge2path(optmerge, ll), theta, verbose)$/;"	v	function:stars.roc
+tmp1	roc.R	/^    tmp1 = ROC$prec[ord.p]$/;"	v	function:huge.pr
+tmp2	roc.R	/^    tmp2 = ROC$rec[ord.p]$/;"	v	function:huge.pr
+tmpInds	community_graph.R	/^        tmpInds <- arrayInd(inds, c(D,D))$/;"	v	functionVar:enforceE.uniqMatInds
+tmpInds	community_graph.R	/^        tmpInds <- uniqMatInds(oneInds, D)$/;"	v	function:enforceE
+tp.all	roc.R	/^        tp.all = (theta != 0) * (tmp != 0)$/;"	v	function:huge.pr
+tril	normalization.R	/^tril <- function(x) x[lower.tri(x)]$/;"	f
+triu	normalization.R	/^triu <- function(x) x[upper.tri(x)]$/;"	f
+triu2diag	normalization.R	/^triu2diag <- function(x, diagval=0) {$/;"	f
+unif	mvdistributions.R	/^    unif   <- pnorm(normd)$/;"	v	function:rmvnegbin
+unif	mvdistributions.R	/^    unif   <- pnorm(normd)$/;"	v	function:rmvpois
+unif	mvdistributions.R	/^    unif   <- pnorm(normd)$/;"	v	function:rmvzinegbin
+unif	mvdistributions.R	/^    unif   <- pnorm(normd)$/;"	v	function:rmvzipois
+uniqMatInds	community_graph.R	/^    uniqMatInds <- function(inds, D) {$/;"	v	function:enforceE
+upper	fitdistr.R	/^        upper <- c(Inf, .99)$/;"	v	function:fitdistr
+upt	utilities.R	/^    upt <- Matrix::triu(beta)$/;"	v	function:symBeta
+uptind	utilities.R	/^    uptind <- Matrix::which(maxt == abs(upt))$/;"	v	function:symBeta
+utri	community_graph.R	/^    utri  <- triu(Theta)$/;"	v	function:graph2prec
+v	fitdistr.R	/^        v <- var(x)$/;"	v	function:fitdistr
+vars	fitdistr.R	/^        vars <- ((1 - pstr0) * (estimate^2 + estimate)) - ((1-pstr0) * estimate)^2$/;"	v	function:fitdistr
+weighted	plotNet.R	/^    g <- igraph::graph.adjacency(Adj, mode = "undirected", weighted = TRUE, diag=diag)$/;"	v	function:adj2igraph
+which1	fitdistr.R	/^        which1  <- which(x == 1.0)$/;"	v	function:fitdistr
+whichz	fitdistr.R	/^        whichz  <- which(x == 0.0)$/;"	v	function:fitdistr
+x	fitdistr.R	/^        x   <- as.vector(fit)$/;"	v	function:qqdplot_comm
+x	fitdistr.R	/^        x <- qzinegbin(ppoints(n), munb=param$munb, size=param$size, pstr0=param$pstr0)[order(or/;"	v	function:qqdplot
+x.alr	normalization.R	/^    x.alr <- ifelse(zero, LOG - LOG[,divcomp], 0.0)$/;"	v	function:alr.matrix
+x.alr	normalization.R	/^    x.alr <- ifelse(zero, LOG - LOG[divcomp], 0.0)$/;"	v	function:alr.default
+x.f	normalization.R	/^    x.f <- norm_to_total(x)$/;"	v	function:shannon
+xrange	fitdistr.R	/^        xrange <- range(y)$/;"	v	function:qqdplot
+xrange	fitdistr.R	/^        xrange <- range(y)$/;"	v	function:qqdplot_comm
+y	fitdistr.R	/^        y   <- as.vector(as.matrix(comm))$/;"	v	function:qqdplot_comm
+zero	community_graph.R	/^    zero    <- matrix(0, D, D)$/;"	v	functionVar:enforceE.scale_free.band
+zero	normalization.R	/^    zero <- (x.f >= tol)$/;"	v	function:alr.default
+zero	normalization.R	/^    zero <- (x.f >= tol)$/;"	v	function:alr.matrix
+zeroInds	community_graph.R	/^        zeroInds <- which(Graph == 0)$/;"	v	function:enforceE
+zind	fitdistr.R	/^        zind    <- na.omit(whichz[1:max])$/;"	v	function:fitdistr

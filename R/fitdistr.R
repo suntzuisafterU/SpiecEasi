@@ -13,12 +13,16 @@
 #' @param ... additional parameters to parameter fitting
 #' @return community
 #' @export
-synth_comm_from_counts <- function(comm, mar=2, distr, Sigma=cov(comm),
+synth_comm_from_counts <- function(comm, mar=2, distr, Sigma=cov(comm), # TODO: extend this function to support a list of distributions relating a string to each column to fit.
                                    params, n=nrow(comm), retParams=FALSE, ...) {
     D <- nrow(comm)
-    if (missing(params))  params <- get_comm_params(comm, mar, distr, ...)
+    if (missing(params))  params <- get_comm_params(comm, mar, distr, ...) # TODO: distr is passed here, modify this line of functions
     paramat <- do.call('rbind', params)
     paramat <- data.frame(apply(paramat, 2, as.numeric))
+
+    # TODO: rewrite this portion to:
+    #	1: allow different distr for each column
+    #	2: Then add covars support, with separate sampling steps (this must be analyzed to ensure it is theoretically sound)
     if (distr == 'zinegbin') {
       data <- rmvzinegbin(n, ks=paramat$size, munbs=paramat$munb,
                   ps=paramat$pstr0, Sigma=Sigma)
@@ -45,7 +49,7 @@ synth_comm_from_counts <- function(comm, mar=2, distr, Sigma=cov(comm),
 #' @param ... arguments passed to fitdistr
 #' @return list of parameters
 #' @export
-get_comm_params <- function(comm, mar=2, distr, ...) {
+get_comm_params <- function(comm, mar=2, distr, ...) { # TODO: extend this function to accept list of distributions
     apply(comm, mar, function(x) {
         x <- as.numeric(x)
         ll <- c(list(), fitdistr(x, distr, ...)$par)
@@ -64,7 +68,7 @@ get_comm_params <- function(comm, mar=2, distr, ...) {
 #' @importFrom VGAM dzinegbin dzipois
 #' @importFrom stats dnbinom
 #' @export
-fitdistr <- function (x, densfun, start, control, ...)  {
+fitdistr <- function (x, densfun, start, control, ...)  { # TODO: extend this to include gaussian and uniform (even if these are just r-base calls)
     if (class(x) != "numeric") stop("Error: input must be numeric vector")
     Call <- match.call(expand.dots = TRUE)
     if (missing(start))
@@ -129,7 +133,8 @@ fitdistr <- function (x, densfun, start, control, ...)  {
         whichz  <- which(x == 0.0)
         which1  <- which(x == 1.0)
         max   <- abs(length(whichz) - length(which1))
-        max   <- max - max*.1
+        max   <- max - max*.1 # Aaron: Control the number of OTUs that are allowed??
+        # Aaron: x is a data vector so this doesn't make sense
         zind  <- na.omit(whichz[1:max])
         tempx <- x[-zind]
         pstr0 <- length(which(x == 0)) / length(x)
@@ -168,8 +173,9 @@ fitdistr <- function (x, densfun, start, control, ...)  {
     }
     else if (distname == "pois") {
         m <- mean(x)
-    return(list(par=list(lambda=m)))
+        return(list(par=list(lambda=m)))
     }
+    # TODO: Understand this, and only use it for the required dists
     start <- pmax(start, lower)
     start <- pmin(start, upper)
     names(upper) <- names(lower) <- names(start)

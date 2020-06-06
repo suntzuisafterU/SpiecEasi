@@ -161,11 +161,12 @@ rmvnegbin <- function(n, mu, Sigma, ks, ...) {
 #' @importFrom VGAM qzinegbin
 #' @export
 rmvzinegbin <- function(n, mu, Sigma, munbs, ks, ps, ...) {
-# Generate an NxD matrix of Zero-inflated poisson data,
+# Generate an NxD matrix of Zero-inflated negative binomial data,
 # with counts approximately correlated according to Sigma
     Cor <- cov2cor(Sigma)
     SDs <- sqrt(diag(Sigma))
     if (missing(munbs) || missing(ps) || missing(ks)) {
+	# TODO: extend this as a seperate function that fits the parameters on a col by col basis
         if (length(mu) != length(SDs)) stop("Sigma and mu dimensions don't match")
         munbs <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getLam(mu[i], SDs[i])))
         ps   <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getP(mu[i], munbs[i])))
@@ -175,6 +176,7 @@ rmvzinegbin <- function(n, mu, Sigma, munbs, ks, ps, ...) {
     d   <- length(munbs)
     normd  <- rmvnorm(n, rep(0, d), Sigma=Cor)
     unif   <- pnorm(normd)
+    # TODO: extend this to be parametric on a col by col basis
     data <- matrix(VGAM::qzinegbin(unif, munb=munbs, size=ks, pstr0=ps, ...), n, d)
     data <- .fixInf(data)
     return(data)
