@@ -13,10 +13,17 @@ spiec.easi(data, ...)
 
 \method{spiec.easi}{otu_table}(data, ...)
 
-\method{spiec.easi}{default}(data, method = "glasso",
-  sel.criterion = "stars", verbose = TRUE, pulsar.select = TRUE,
-  pulsar.params = list(), icov.select = pulsar.select,
-  icov.select.params = pulsar.params, ...)
+\method{spiec.easi}{default}(
+  data,
+  method = "glasso",
+  sel.criterion = "stars",
+  verbose = TRUE,
+  pulsar.select = TRUE,
+  pulsar.params = list(),
+  icov.select = pulsar.select,
+  icov.select.params = pulsar.params,
+  ...
+)
 }
 \arguments{
 \item{data}{For a matrix, non-normalized count OTU/data table with samples on rows and features/OTUs in columns. Can also by phyloseq or otu_table object.}

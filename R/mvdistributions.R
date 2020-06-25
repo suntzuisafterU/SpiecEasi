@@ -167,6 +167,7 @@ rmvzinegbin <- function(n, mu, Sigma, munbs, ks, ps, ...) {
     SDs <- sqrt(diag(Sigma))
     if (missing(munbs) || missing(ps) || missing(ks)) {
 	# TODO: extend this as a seperate function that fits the parameters on a col by col basis
+	browser()
         if (length(mu) != length(SDs)) stop("Sigma and mu dimensions don't match")
         munbs <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getLam(mu[i], SDs[i])))
         ps   <- unlist(lapply(1:length(SDs), function(i) .zinegbin_getP(mu[i], munbs[i])))

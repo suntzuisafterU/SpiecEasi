@@ -188,7 +188,7 @@ extrargs	spiec-easi.R	/^  extrargs <- intersect(names(args), nargs)$/;"	v	functi
 ff	roc.R	/^    if (!plot) { ff <- tempfile() ; png(filename=ff) }$/;"	v	function:stars.roc
 fit	fitdistr.R	/^            fit <- t(sapply(1:nrow(comm), function(i) qqdplot(comm[i,], distr=distr, param=param/;"	v	function:qqdplot_comm
 fit	spiec-easi.R	/^  fit <- pulsar::refit(est)$/;"	v	function:spiec.easi.default
-fitdistr	fitdistr.R	/^fitdistr <- function (x, densfun, start, control, ...)  {$/;"	f
+fitdistr	fitdistr.R	/^fitdistr <- function (x, densfun, start, control, ...)  { # TODO: extend this to include gaussia/;"	f
 flag	spiec-easi.R	/^    flag <- .check_pulsar_params(fun, pulsar.params)$/;"	v	function:spiec.easi.default
 fn	roc.R	/^        fn = 1 - ROC$tp[r]$/;"	v	function:huge.pr
 forms	spiec-easi.R	/^  forms <- formals(fun)$/;"	v	function:.check_pulsar_params
@@ -206,7 +206,7 @@ getOptX.pulsar.refit	utilities.R	/^getOptX.pulsar.refit <- function(est, getter=
 getOptiCov	utilities.R	/^getOptiCov <- function(est)  getOptX(est, 'icov')$/;"	f
 getRefit	utilities.R	/^getRefit <- function(est)    getOptNet(est)$/;"	f
 getStability	utilities.R	/^getStability <- function(est)  getOptX(est, 'stars')$/;"	f
-get_comm_params	fitdistr.R	/^get_comm_params <- function(comm, mar=2, distr, ...) {$/;"	f
+get_comm_params	fitdistr.R	/^get_comm_params <- function(comm, mar=2, distr, ...) { # TODO: extend this function to accept li/;"	f
 gind	community_graph.R	/^            gind <- tmpInds[i,]$/;"	v	function:enforceE
 graph2prec	community_graph.R	/^graph2prec <- function(Graph, posThetaLims=c(2,3), negThetaLims=-posThetaLims, targetCondition=1/;"	f
 graphReport	community_graph.R	/^graphReport <- function(Graph) {$/;"	v	functionVar:enforceE.scale_free

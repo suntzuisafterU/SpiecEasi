@@ -35,7 +35,8 @@ synth_comm_from_counts <- function(comm, mar=2, distr, Sigma=cov(comm), # TODO: 
     } else if (distr == "lognorm") {
       Sigma <- cor2cov(Sigma, paramat$sdlog)
       data  <- exp(rmvnorm(n, mu=paramat$meanlog, Sigma=Sigma))
-    }
+    } # NOTE: No else case, can fail if it does not recognize distr, even if fitdistr does
+    #   example fitdistr includes 'gamma' distr.
 
     attr(data, 'params') <- if (retParams) params else NULL
     data
@@ -82,7 +83,7 @@ fitdistr <- function (x, densfun, start, control, ...)  { # TODO: extend this to
         stop("'x' must be a non-empty numeric vector")
     if (any(!is.finite(x)))
         stop("'x' contains missing or infinite values")
-    if (missing(densfun) || !(is.function(densfun) || is.character(densfun)))
+    if ( missing(densfun) || !(is.function(densfun) || is.character(densfun)) )
         stop("'densfun' must be supplied as a function or name")
 
     n <- length(x)
