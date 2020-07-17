@@ -74,7 +74,7 @@ fitdistr <- function (x, densfun, start, control, ...)  { # TODO: extend this to
     Call <- match.call(expand.dots = TRUE)
     if (missing(start))
         start <- NULL
-    if (missing(control)) 
+    if (missing(control))
         control <- list(fnscale=1e12, factr=1e-2, maxit=10)
 
     dots <- names(list(...))
@@ -186,7 +186,7 @@ fitdistr <- function (x, densfun, start, control, ...)  { # TODO: extend this to
 }
 
 
-#' @keywords internal
+#' @noRd
 #' @importFrom VGAM dzinegbin
 logLikzinb <- function(param,x,...) {
     param <- abs(param)
@@ -196,7 +196,7 @@ logLikzinb <- function(param,x,...) {
     (-sum(VGAM::dzinegbin(x, munb=munb, pstr0=pstr0, size=size, log=TRUE, ...)))
 }
 
-#' @keywords internal
+#' @noRd
 #' @importFrom stats dnbinom
 logLiknb <- function(param, x, ...) {
     param <- abs(param)
@@ -204,7 +204,7 @@ logLiknb <- function(param, x, ...) {
     size   <- param['size']
     (-sum(dnbinom(x, mu=munb, size=size, log=TRUE, ...)))
 }
-#' @keywords internal
+#' @noRd
 #' @importFrom VGAM dzipois
 logLikzip <- function(param, x, ddistr, ...) {
     pstr0  <- param['pstr0']
@@ -247,7 +247,7 @@ qqdplot_comm <- function(comm, distr, param, plot=TRUE, ...) {
 }
 
 #' deprecated??
-#' @keywords internal
+#' @noRd
 qqdplot <- function(y, distr, param, plot=TRUE, ...) {
 
     if ((missing(param) || is.null(param)) && !(distr %in% c('lnorm', 'pois', 'negbin'))) {
